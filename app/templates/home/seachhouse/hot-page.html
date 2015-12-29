@@ -1,0 +1,22 @@
+<div class="hot">
+	<ul class="hot-house-list">
+		<% var flag =true,i=0;
+		_.each(hotHouseResources,function(item,index){
+			 if(index%4==0&&flag){  
+			 	flag =false
+			 %><li><%}else{
+			 	i++
+			 }%>
+			 <div>
+				<img src="<%=item.HouseResourcesImgUrl%>">
+				<section class="h-s">
+					<span class="h-s-name"><%=item.HouseResourcesName%></span><br>
+				</section>
+			</div>
+			<%if(index%4==0&&i==3){ i=0;%></li><%}
+		})%>
+	</ul>
+	<div style="text-align:center">
+	    <ul class="pagination" id="pagination"></ul>
+	</div>
+</div>

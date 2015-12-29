@@ -1,0 +1,19 @@
+<div>
+	<span class="recommend-icons"></span>
+	<ul class="recommend-house-list">
+		<%_.each(recommendHouseResources,function(item,index){%>
+			<li>
+				<img src="<%=item.HouseResourcesImgUrl%>">
+				<section class="h-s">
+					<span class="h-s-name"><%=item.HouseResourcesName%></span><br>
+					<span class="h-s-price"><%=item.HouseResourcesprice%>/m2/天</span>
+				</section>
+			</li>
+		<%})%>
+
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>

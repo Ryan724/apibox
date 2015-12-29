@@ -1,0 +1,40 @@
+.contrast-table tr,td,th{
+	border: 1px solid #745151;
+	line-height: 28px;
+}
+.middle-ban{
+	background-color: #0BA296;
+    text-align: left;
+}
+.middle-ban a{
+	color: #FFF;
+    line-height: 28px;
+    padding-left: 5px;
+}
+.housing-contrast-content{
+	min-height: 1470px;
+}
+
+.contrast-table-location{
+	position: absolute;
+	top: 130px;
+	left: 330px;
+	width: 780px
+}
+.contrast-navigation-bar{
+	position: absolute;
+    top: 400px;
+    left: 170px;
+    width: 100px;
+}
+
+.contrast-page-line{
+	position: absolute;
+    top: 80px;
+    left: 150px;
+    width: 1px;
+    border:1px solid #0BA296;
+    height: 1350px;
+}
+
+

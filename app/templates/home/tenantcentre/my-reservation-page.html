@@ -1,0 +1,86 @@
+<div class="centre-page-title">
+	<p class="all-page-title">我的预约单</p>
+	<br/>
+	<hr></hr>
+	<br/>
+	<form>
+		预约单号<input type="text" name="reservation-number" size="12" />
+		预约时间<input type="text" name="reservation-first-time" size="12" />--<input type="text" name="reservation-last-time" size="12" />
+		房源信息<input type="text" name="housing-infor" size="12" />
+		<br/>
+		房源类型<select name="resource-type">
+			<option value="unit-property">单元物业</option>
+			<option value="unit-property">单元物业</option>
+			<option value="unit-property">单元物业</option>
+		</select>
+		状态<select name="reservation-status">
+			<option value="looked">预约成功</option>
+			<option value="unlooked">预约</option>
+			<option value="cancelled">预约取消</option>
+		</select>
+		<input type="button" id="screening" value="筛选">
+	</form>
+
+	<br/>
+	<hr></hr>
+	<br/>
+	<br/>
+    <table border="1" width="100%" id="reservation-page-table">
+		<thead>
+			<tr>
+    			<th>预约单号</th>
+    			<th>房源信息</th>
+    			<th>房源类型</th>
+    			<th>产权人属性</th>
+    			<th>预约时间</th>
+    			<th>状态</th>
+    			<th>操作</th>
+    		</tr>
+        </thead>
+        <tfoot></tfoot>
+        <tbody>
+        	<tr name="added"><!--Register租户联系人表-->
+    			<td>10001</td>
+    			<td>中星城</td>
+    			<td>单元物业</td>
+    			<td>无</td>
+    			<td>2015-09-20</td>
+    			<td>未确认</td>
+    			<td>
+    				<input type="button" class="judge" value="评价" />
+      				<input type="button" class="destroy" value="取消" />
+      				<input type="button" class="complaint" value="投诉"/>
+                </td>
+    		</tr>
+
+    		<tr>
+    			<td>10002</td>
+    			<td>王府井百货</td>
+    			<td>单元物业</td>
+    			<td>无</td>
+    			<td>2015-09-20</td>
+    			<td>未确认</td>
+    			<td>
+    				<input type="button" class="judge" value="评价" />
+      				<input type="button" class="destroy" value="取消" />
+      				<input type="button" class="complaint" value="投诉"/>
+      			</td>
+    		</tr>
+
+    		<tr>
+    			<td>10003</td>
+    			<td>通景大厦</td>
+    			<td>单元物业</td>
+    			<td>无</td>
+    			<td>2015-09-20</td>
+    			<td>未确认</td>
+    			<td>
+    				<input type="button" class="judge" value="评价" />
+      				<input type="button" class="destroy" value="取消" />
+      				<input type="button" class="complaint" value="投诉"/>
+      			</td>
+    		</tr>
+
+        </toby>
+    </table>
+</div>

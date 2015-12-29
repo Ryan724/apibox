@@ -1,0 +1,45 @@
+<div class="baoban-register-login">
+	<section class="cont-item newslist-item" >
+		<div class="register-login-zone">
+			<div>
+			<%if(flag=="login"){%>
+				<div>
+					<span class="title">登陆</span>
+					<div class="info">
+						<div><span>手机号码：</span><input type="text" class="l-phone"/></div>
+						<div><span>密码：</span><input type="password" class="l-pwd"/></div>
+						<div>
+							<span>验证码：</span>
+							<div style="margin-left: -4px;display: inline-block;height: 22px; border: 1px solid #A9A7A7; padding: 0 2px;"> 
+								<input type="text"  class="l-code" style="border:0;width:114px;outline: none;"/>
+								<span class="getcode l-getcode"><img src=""></span>
+							</div>
+						</div>
+					</div>
+					<div  class="login-zone">
+						<span class="login-btn">登陆</span>
+						<a href="javascript:void(0)" class="forget-pwd">忘记密码</a>
+						<a href="javascript:void(0)" class="new-user-register">新用户注册</a>
+					</div>
+				</div>
+			<%}else{%>
+				<div>
+					<span class="title">注册</span>
+					<div class="info">
+						<div><span>手机号码：</span><input type="text"  class="r-phone"/></div>
+						<div><span>密码：</span><input type="password" class="r-pwd"/></div>
+						<div><span>确认密码：</span><input type="password" class="r-repwd"/></div>
+						<div>
+							<span>验证码：</span>
+							<input type="text" style="margin-left: -4px;" class="r-code"/>
+							<span class="getcode r-getcode">获取验证码</span>
+						</div>
+					</div>
+					<div style="text-align:center;margin:35px 0;"><span class="agree"></span></div>
+				</div>
+			<%}%>
+			</div>
+		</div>
+		<div class="cont-footer"><div class="footer"></div></div>
+	</section>
+</div>
