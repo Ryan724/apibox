@@ -1,11 +1,5 @@
 module.exports = function( grunt ) {//node下的运行的js，s
 	'use strict';
-	//
-	// Grunt configuration:  
-	//
-	// https://github.com/cowboy/grunt/blob/master/docs/getting_started.md
-	//
-
 	var config = {
 		pkg: grunt.file.readJSON('package.json')
 		,banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd H:MM") %> */'
@@ -94,7 +88,6 @@ module.exports = function( grunt ) {//node下的运行的js，s
 		}
 		,cssmin: {
 			options: {
-				// report: 'gzip',
 				banner: '<%= banner %>'
 			},
 			compress: {
@@ -103,16 +96,7 @@ module.exports = function( grunt ) {//node下的运行的js，s
 				}
 			}
 		}
-		,connect: {
-			server: {
-				options: {
-					hostname: 'localhost'
-					// ,port: 8000
-					,base: 'app'
-					,open: 'http://localhost:8000'
-				}
-			}
-		}
+		// ,connect: {server: {options: {hostname: 'localhost',base: 'app',open: 'http://localhost:8000'} } }
 		,concurrent: {
 			jst: ['jst:common']
 			,rjs: ['requirejs:mainIncludeFiles']	// fix: rjs copy conflict
@@ -162,13 +146,10 @@ module.exports = function( grunt ) {//node下的运行的js，s
 
 	grunt.initConfig(config);
 
-
-	grunt.registerTask('js-sync', ['jst','requirejs','uglify']);
-	grunt.registerTask('js', ['concurrent']);
-	grunt.registerTask('css', ['cssjoin','cssmin']);
-	grunt.registerTask('default', ['jst']);
-	grunt.registerTask('server', ['jst','connect','watch']);
-
+	grunt.registerTask('default', []);
+	grunt.registerTask('js-sync', ['jst','requirejs','uglify','cssjoin','cssmin','concurrent']);
+	grunt.registerTask('watch', ['watch']);
+	grunt.registerTask('init', ['jst']);
 	grunt.registerTask('hosts', function(env){
 		env = env || "dev";
 		var config = grunt.file.readJSON('package.json');

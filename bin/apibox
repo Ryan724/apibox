@@ -7,8 +7,8 @@ program
     .usage('[options]')
     .description(pkg.description)
     .option('-i, --init [projectRoot]', '接口环境初始化')
-    .option('-s, --server [configFilePath]', '启动apibox接口文档服务器')
+    .option('-w, --watch [configFilePath]', '开启编辑时随时编译')
     .option('-m, --mock [projectRoot]', '启动接口mock服务器')
-    .option('-p, --port [port]', '接口服务器端口')
+    .option('-s, --server [port]', '启动ApiClient服务器')
     .parse(process.argv);
 require('../commands/api.js').exec(argv);
