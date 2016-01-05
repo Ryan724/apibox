@@ -11,4 +11,4 @@ program
     .option('-m, --mock [projectRoot]', '启动接口mock服务器')
     .option('-s, --server [port]', '启动ApiClient服务器')
     .parse(process.argv);
-require('../commands/api.js').exec(argv);
+require('../lib/commands/api.js').exec(argv);
