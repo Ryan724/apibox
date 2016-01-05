@@ -13,14 +13,22 @@ define(['talent'
 		template: jst['home/index-page']
 		,className: 'home-page-container'
 		,initialize: function() {}
-		,events:function(){}
+		,events:function(){
+			var events= {};
+			events["click .single-p"] = this.clkSP;
+			return events;
+		}
 		,onRender: function(){}
-		,onShow: function() {
+		,onShow: function() {}
+		,clkSP:function(e){
+			Talent.app.request("apibox:getClassData").done(function(resp){
+				console.log(resp)
+			});
 		}
 		,onClose:function(){}
 	});
 	return Talent.BasePageView.extend({
 		mainViewClass : MainView
-		,pageTitle: 'Home'
+		,pageTitle: 'apibox'
 	});
 });
