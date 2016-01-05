@@ -1,0 +1,347 @@
+.hidden{
+	display: none !important;
+}
+.seach-house{
+	width: 1000px;
+	margin: 0 auto;
+}
+.seachhoush-content{
+	width: 100%;
+}
+.seachhoush-content .seach-mian-content{
+	margin: 10px 0 30px 0;	
+}
+.seachhoush-content .condition-add-hots{
+	display: inline-block;
+	min-height: 600px;
+	width: 83%;
+}
+.seachhoush-content .condition{
+	width: 100%;
+	font-size: 12px;
+}
+.condition .condition-detail .cdt-details .item{
+	display: inline-block;
+	color: red;
+	border: 1px solid #e1e1e1;
+}
+.condition .condition-sort{    
+	height: 50px;
+    border: 1px solid #e1e1e1;
+    width: 95%;
+    margin: 10px auto;
+    background-image: -webkit-linear-gradient(top,#14a6a3 0%, #1880aa 50%,#195788 100%);  
+    border-radius: 4px;
+}
+.condition .condition-sort span{
+	width: 90px;
+	height: 32px;
+	float: right;
+    margin: 7px 2px 0;
+	display: inline-block;
+	cursor: pointer;
+}
+.condition .condition-sort .attention{
+	    background: url("../../images/icons.png") no-repeat -270px -174px;
+}
+.condition .condition-sort .price{
+	    background: url("../../images/icons.png") no-repeat -272px -133px;
+}
+.condition .condition-sort .starttime{
+	    background: url("../../images/icons.png") no-repeat -272px -90px;
+}
+.condition .condition-sort .distance{
+	    background: url("../../images/icons.png") no-repeat -272px -48px;
+}
+.seachhoush-content .condition .utility-unit{
+	height: 190px;
+	width: 95%;
+	margin:auto;
+	border: 3px solid #0ba296;
+	padding: 2px;
+	position: relative;
+}
+.seachhoush-content .condition .utility-unit:before{
+	content: "物业单元";
+	display: inline-block;
+	width: 20px;
+	height: 70px;
+	background: #0ba296;
+	position: absolute;
+	border-radius: 2px;
+	left: -20px;
+	font-size: 12px;
+	color:#fff;
+	text-align: center;
+	line-height: 16px;
+	top: -3px;
+	writing-mode:lr-tb;
+}
+.seachhoush-content .utility-unit .active{
+	position: relative;
+}
+.seachhoush-content .utility-unit .active2:after{
+    content: " ";
+    position: absolute;
+    top: 13px;
+    left: -9px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-bottom: 20px solid #0ba296;
+    border-right: 20px solid transparent;
+}
+.seachhoush-content .condition .subway-detail,
+.seachhoush-content .utility-unit .regional-plate-detail{
+	position: absolute;
+	border: 1px solid #0ba296;
+	display: none;
+	width: 97%;
+	margin: 5px;
+	background: #fff;
+	z-index: 2;
+}
+.seachhoush-content .condition .subway-detail .sure,
+.seachhoush-content .regional-plate-detail .sure{
+	width: 50px;
+    position: absolute;
+    bottom: 2px;
+    right: 10px;
+}
+.seachhoush-content .condition .utility-unit em{
+	background: #6C6A6A;
+	color: #fff;
+	min-width: 40px;
+	border-radius: 1px;
+	text-align: center;
+}
+.seachhoush-content .condition .utility-unit span{
+	display: inline-block;
+	margin: 5px;
+}
+.seachhoush-content .recommend-houses{
+	min-height: 600px;
+	width: 15%;
+    margin-right: 20px;
+	float: right;
+}
+
+.seachhoush-content .condition .utility-unit em.price-not-selected{
+	background:#fff;
+	color:#000;
+	border:1px solid #e1e1e1;
+}
+
+.seachhoush-content .condition .condition-detail{
+	visibility: hidden;
+}
+.seachhoush-content .condition .condition-detail .cdt-details{
+	display:inline-block;
+}
+.seachhoush-content .condition .rent-price .price-zone{
+	display: inline-block;
+}
+
+.details-sure:focus{
+    outline: none;
+}
+.details-sure{
+    background: url("../../images/icons.png") no-repeat -274px 3px;
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    border: 0;
+    width: 70px;
+    height: 42px;
+}
+.seachhoush-content .recommend-house-list{
+    margin-left: 40px;
+}
+.seachhoush-content .recommend-icons{
+    display: inline-block;
+    width: 191px;
+    height: 34px;
+    background: url("../../images/icons.png") no-repeat -14px -224px;
+}
+.seachhoush-content  .hot-house-list>li>div  img,
+.seachhoush-content .recommend-house-list img{
+	width: 100%;
+	height: 100%;
+}
+.seachhoush-content  .hot-house-list>li>div .h-s{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	background: #e7844d;
+    text-align: center;
+	position: absolute;
+	bottom: 0;
+	cursor: pointer;
+}
+.seachhoush-content .recommend-house-list .h-s{
+	width: 100%;
+	background: #e95412;
+    border-top-left-radius: 24px;
+    text-align: center;
+	position: absolute;
+	bottom: 0;
+	cursor: pointer;
+}
+.seachhoush-content  .hot-house-list>li>div .h-s-name,
+.seachhoush-content .recommend-house-list .h-s-price,
+.seachhoush-content .recommend-house-list .h-s-name{
+	color: #fff;
+	font-size: 12px;
+}
+.seachhoush-content .recommend-house-list>li{
+	border: 1px solid #e1e1e1;
+	width:100px;
+	height: 100px;
+	margin: 5px auto;
+	position: relative;
+}
+.seachhoush-content  .hot-house-list>li{
+	width: 700px;
+	margin: 0 auto;
+}
+.seachhoush-content  .hot-house-list>li>div{
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	margin: 5px;
+	border: 1px solid #e1e1e1;
+	border-radius: 4px;
+	position: relative;
+    overflow: hidden;
+}
+.seachhoush-content  .hot-house-list>li>div .h-s{
+	opacity: 0.9;
+}
+/*--------------------分页组件-------------------*/
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+.pagination>li {
+    display: inline;
+}
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #428bca;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+}
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+    z-index: 2;
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+    cursor: default;
+}
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #428bca;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+}
+.detail-house-list .detail{
+	width: 100%;
+	height: 130px;
+	border-bottom: 1px solid #bedcda;
+	border-top: 1px solid #bedcda;
+	background-color: #e7f0ef;
+}
+.detail-house-list li{
+	margin: 5px 0;
+}
+.detail-house-list .detail img{
+	width: 110px;
+	height: 110px;
+	margin-top:10px;
+}
+.detail-house-list .detail  section{    
+	display: inline-block;
+    width: 83%;
+    height: 90%;
+    margin-right: 10px;
+    float: right;
+}
+.detail-house-list .detail  .detail-up{
+	height: 45px;
+	line-height: 45px;
+}
+.detail-house-list .detail  .detail-up span{
+	display: inline-block;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.detail-house-list .detail  .detail-up .HouseResourcesName{
+	color: #0ba296;
+	font-size: 20px;
+	width: 100px;
+}
+.detail-house-list .detail  .detail-up .up-item{
+	font-size: 14px;
+	float:right;
+	margin: 0 5px;
+}
+.detail-house-list .detail  .detail-up .plate,
+.detail-house-list .detail  .detail-up .distric,
+.detail-house-list .detail  .detail-up .company{
+	width: 100px;
+}
+.detail-house-list .detail  .detail-up .address{
+	width: 150px;
+}
+.y-line{
+	height: 70%;
+	border-left: 1px solid #6F6D6D;
+	margin-top: 4px !important;
+}
+.detail-house-list .detail  .detail-down{
+	border-top:1px solid #000;
+}
+.detail-house-list .detail  .detail-down .price-item,
+.detail-house-list .detail  .detail-down .area-item{
+	color:#eb5312;
+	width:48%;
+	display: inline-block;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+}
+.detail-house-list .detail  .detail-down .font20{
+	font-size: 20px;
+}
+.detail-house-list .detail  .detail-down .font12{
+	font-size: 12px;
+}
+.detail-house-list .detail  .detail-down .can-see{
+	display: inline-block;
+	color: #0ba296;
+}
+.detail-house-list .detail  .detail-down .see-times{
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	float: right;
+}
+.detail-house-list .detail  .detail-down .can-see,
+.detail-house-list .detail  .detail-down .price-item,
+.detail-house-list .detail  .detail-up .HouseResourcesName{
+	text-align: left;
+}

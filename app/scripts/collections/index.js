@@ -1,13 +1,13 @@
 require(['talent'
-	,'collections/welcome-collection'
+	,'collections/apibox-collection'
 ],function(
 	Talent
-	,WelcomeCollection
+	,ApiboxCollection
 ){
-	Talent.app.reqres.setHandler('welcome', function(options, operation){
-		if(!WelcomeCollection.instance){
-			WelcomeCollection.instance = new WelcomeCollection(); 
+	Talent.app.reqres.setHandler('apibox', function(options, operation){
+		if(!ApiboxCollection.instance){
+			ApiboxCollection.instance = new ApiboxCollection(); 
 		}
-		return WelcomeCollection.instance[operation](options);
+		return ApiboxCollection.instance[operation](options);
 	} );
 })
