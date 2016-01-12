@@ -2,7 +2,7 @@ var assert = require("assert"),
     should = require("should"),
     Project = require('../lib/server/project');
 
-var pro = {"name": "apibox项目1", "desc": "项目测试ww描述"};
+var pro = {"name": "apibox项目1", "desc": "项目测试w描述"};
 
 describe('Project 基础功能测试', function() {
     it('可以新增一个项目', function() {
