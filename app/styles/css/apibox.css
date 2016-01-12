@@ -4,3 +4,32 @@
 	width: 200px;
 	height: 200px;
 }
+.data-key{
+	display: block;
+	min-width: 20px;
+	min-height: 20px;
+	margin-left: 20px;
+	position: absolute;
+}
+.input-key,.input-value{
+	display: none;
+	position: absolute;
+}
+.key-box,.value-box{
+	position: relative;
+}
+.value-box{
+	left: 68px;
+}
+.data-close{
+	margin-top: 20px;
+}
+.data-select{
+	display: none;
+}
+.select-icon{
+	display: inline-block;
+	width: 15px;
+	height: 10px;
+	background: url(../../images/select-icon.png);
+}

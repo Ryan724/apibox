@@ -12,6 +12,9 @@ require.config({
 		,"createpage" : 'vendor/plugins/jquery.page'//翻页插件
 		,"datatables": 'vendor/plugins/jquery.dataTables'//表格插件
 		,"md5": 'vendor/plugins/MD5'
+
+		,"jquery.ui": "vendor/components/jquery.ui/index"
+		,"Backbone": 'helpers/legacy/backbone'
 	},
 	shim: {
 		'$': {

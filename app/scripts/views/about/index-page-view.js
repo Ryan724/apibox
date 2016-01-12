@@ -17,6 +17,7 @@ define(['talent'
 			var events = {};
 			// events['click ' + this.ui.item] = 'eventHandler';
 			return events;
+			
 		}
 	});
 
