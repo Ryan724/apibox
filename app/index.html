@@ -3,10 +3,7 @@
   <head>
 	<meta charset="utf-8" />
 	<title>Home Page</title>
-	<!--RepoVersion:1018-->
 	<link href="styles/css/all.css" rel="stylesheet" type="text/css" />
-	<!--hotfix css start-->
-	<!--hotfix css end-->
 	<script>
 		var BSGlobal = {
 			root: "/"
@@ -20,15 +17,10 @@
 	<div id="bs_layout_container" class="container"></div>
 	<script>
 		BSGlobal.entryPageId = 'home';
-		
 		BSGlobal.tenantInfo = {};
 		BSGlobal.loginUserInfo = {};
-
 		BSGlobal.env = 'Development';
-		// BSGlobal.apiPath = 'http://webapi.bs-ux.com';
-		// BSGlobal.webPath = 'bs-ux.com';
 	</script>
-
 	<script src="scripts/vendor/components/requirejs/index.js" data-main="scripts/main"></script>
 	<script type="text/javascript">			
 		BSGlobal.staticPath = '.';
@@ -36,7 +28,6 @@
 			baseUrl: BSGlobal.staticPath+'/scripts',
 			map: {
 				'*': {
-				//top channels start
 				"views/home/all-in-one":"views/home/index-page-view"
 				,"views/about/all-in-one":"views/about/index-page-view"
 				,"views/set-data/all-in-one":"views/set-data/index-page-view"
@@ -52,6 +43,7 @@
 				}
 			}
 		});
+		requirejs.config({map: {'*': {} } });
 	</script>
   </body>
 </html>
