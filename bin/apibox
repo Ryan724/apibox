@@ -10,5 +10,6 @@ program
     .option('-w, --watch [configFilePath]', '开启编辑时随时编译')
     .option('-m, --mock [projectRoot]', '启动接口mock服务器')
     .option('-s, --server [port]', '启动ApiClient服务器')
+    .option('-t, --test', '测试基础功能')
     .parse(process.argv);
 require('../lib/commands/api.js').exec(argv);

@@ -1,4 +1,5 @@
 .DS_Store
+/apilib
 /node_modules/
 /app/scripts/templates/
 /release
