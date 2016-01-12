@@ -1,6 +1,5 @@
 .DS_Store
-/apilib/
-/apilib/info.json
+apilib/info.json
 /node_modules/
 /app/scripts/templates/
 /release
