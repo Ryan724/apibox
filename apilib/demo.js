@@ -4,6 +4,7 @@ if (typeof exports === 'undefined') {
 
 exports.config = {
     "name": "这是接口名",
+    "project":"4e333867b7612846e8b087296343e5fc",
     "desc": "这是接口的详细描述",
     "url": "http://example.com/demo",
     "method": ['GET'],
