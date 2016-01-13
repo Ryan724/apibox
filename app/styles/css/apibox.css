@@ -14,12 +14,14 @@
 .input-key,.input-value{
 	display: none;
 	position: absolute;
+	left: 20px;
 }
 .key-box,.value-box{
 	position: relative;
 }
 .value-box{
 	left: 68px;
+	width: 200px;
 }
 .data-close{
 	margin-top: 20px;
@@ -31,5 +33,18 @@
 	display: inline-block;
 	width: 15px;
 	height: 10px;
+	border: 1px solid red;
 	background: url(../../images/select-icon.png);
+	position: absolute;
+	top: 5px;
+	right:5px;
+}
+.data-list{
+	width: 198px;
+	border:1px solid rgb(204,204,204);
+	position: relative;
+}
+.select-datalist{
+	width: 198px;
+	margin-left:-30px;
 }

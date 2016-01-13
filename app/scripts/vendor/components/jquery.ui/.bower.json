@@ -1,0 +1,19 @@
+{
+  "name": "jquery.ui",
+  "description": "jQuery user interface",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">=1.9.1"
+  },
+  "private": true,
+  "_release": "f509d05d1f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f509d05d1f8d406064c723ab9ba2d35014b0447f"
+  },
+  "_source": "git@gitlab.beisen.co:js/jquery.ui.git",
+  "_target": "*",
+  "_originalSource": "jquery.ui"
+}

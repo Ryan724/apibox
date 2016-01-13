@@ -1,0 +1,30 @@
+<div class="bs_dialog3 <%=dialogId%>" style="z-index:1200">
+	<div class="bs_dialog3_wrap">
+		<%if(title){%>
+			<div class="tit"><%=title%></div>
+		<%}%>
+		<div class="bscontent">
+			<%if(icon!="common"){%>
+			<ul class="icon_ul">
+				<li class="icon_li">
+					<span class="aui_icon <%= icon %>"></span>
+				</li>
+				<li class="cont_li">
+					<div class="bsdialog_content"></div>
+				</li>
+			</ul>
+			<%}else{%>
+				<div class="bsdialog_content"></div>
+			<%}%>
+		</div>
+		<%if(buttons){%>
+			<div class="bs_dialog3_btn" >
+				<%_.each(buttons,function(item,index){%>
+					<a id="<%=item.id%>">
+						<span class="<%=item.type=="text"?"text_span":("btn_text "+item.type) %>"><%=item.name%></span>
+					</a>
+				<%})%>
+			</div>
+		<%}%>
+	</div>		
+</div>

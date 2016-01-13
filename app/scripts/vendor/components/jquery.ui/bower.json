@@ -1,0 +1,11 @@
+{
+  "name": "jquery.ui",
+  "version": "1.10.3",
+  "description": "jQuery user interface",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">=1.9.1"
+  },
+  "private": true
+}
