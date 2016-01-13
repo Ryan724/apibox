@@ -42,7 +42,9 @@
 .data-list{
 	width: 198px;
 	border:1px solid rgb(204,204,204);
-	position: relative;
+	position: absolute;
+	left: 70px;
+	z-index: 10;
 }
 .select-datalist{
 	width: 198px;

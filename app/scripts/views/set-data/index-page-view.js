@@ -67,8 +67,7 @@ define(['talent'
 			    html+='</ul>';
 			    html+='<span class="select-icon"></span>'
 			    html+='</div>'
-				$(e.target).after(html);
-				return false;
+				$(e.target).after($(html));
 			}
 		}
 		,toggelData:function(e){
@@ -82,7 +81,7 @@ define(['talent'
 			}else if (dataName=='Boolean' || dataName=='Number' ||dataName=='String') {
 				html=self.htmlType('"','"');
 			}
-			$(e.currentTarget).parents(".value-box").eq(0).html(html).find(".data-key").text(dataName);
+			$(e.currentTarget).parents(".data-list").eq(0).html(html).find(".data-key").text(dataName);
 		}
 		,htmlType:function(open,close){
 			var html='';
