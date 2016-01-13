@@ -68,6 +68,7 @@ define(['talent'
 			    html+='<span class="select-icon"></span>'
 			    html+='</div>'
 				$(e.target).after(html);
+				return false;
 			}
 		}
 		,toggelData:function(e){
