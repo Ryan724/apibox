@@ -1,4 +1,5 @@
 .DS_Store
+/.idea
 /apilib/*
 /node_modules/
 /app/scripts/templates/
