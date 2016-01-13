@@ -52,7 +52,7 @@ define(['talent'
 			var html='';
 			var data=[{name:"Object"}
 					   ,{name:"String"}
-					   ,{name:"Array"}
+					   ,{name:"Array"} 
 					   ,{name:"Number"}
 					   ,{name:"Boolean"}
 					 ];
