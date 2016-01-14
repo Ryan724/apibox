@@ -26,6 +26,15 @@ define(['talent'], function(Talent) {
                 deferred.resolve(resp);
             });
             return deferred.promise();
+		},
+		addApi:function(options){
+			var deferred = new Talent.$.Deferred();
+            var model = new Talent.Model();
+            model.url = "/api/interface/add";
+            model.save(options).done(function(resp) {
+                deferred.resolve(resp);
+            });
+            return deferred.promise();
 		}
 	});
 });
