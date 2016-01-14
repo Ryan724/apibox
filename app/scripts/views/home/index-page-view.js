@@ -14,7 +14,7 @@ define(['talent'
 		,className: 'home-page-container'
 		,initialize: function() {}
 		,events:function(){
-			var events= {};
+			var events= {}; 
 			events["click .single-p"] = this.clkSP;
 			return events;
 		}
