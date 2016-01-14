@@ -562,3 +562,46 @@ body{
 .baoban-register-login .register-login-zone .login-zone a{
 	font-size: 12px;
 }
+
+
+/*----------------------header css---------------------------------*/
+.indexheader {
+	min-width: 1280px;
+	width: 100%;
+	text-align: center;
+}
+.indexheader .logo {
+	display: inline-block;
+	width: 110px;
+	height: 40px;
+	float: left;
+	background: url(../../images/api_logo.png);
+}
+.indexheader .seach-nr {
+	width: 824px;
+	height: 36px;
+	float: left;
+	line-height: 40px;
+	color: #aeaeae;
+}
+.indexheader .search {
+	display: inline-block;
+	width: 54px;
+	height: 40px;
+	float: left;
+	background: url(../../images/seach-logo.png);
+}
+.indexheader .new-button {
+	display: inline-block;
+	width: 110px;
+	height: 42px;
+	float: left;
+	border: none;
+	background: #5093e1;
+	color:white;
+}
+.indexheader:after {
+	content: " ";
+	display: block;
+	clear: both;
+}
