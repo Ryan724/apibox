@@ -20,13 +20,21 @@ define(['talent', 'templates/apibox', "views/apibox/project-select-view"], funct
 		onShow: function() {},
 		showProjectInput: function(e) {
 			var self = this;
-			if (this.isProjectRegionShow) return;
-			this.projectSelectView = new ProjectSelectView();
-			// Talent.app.request("apibox:getClassData").done(function(resp) {
-			self.projectRegion.show(this.projectSelectView);
-			self.$(".project-select").show();
-			self.isProjectRegionShow = true;
-			// });
+			if (this.isProjectRegionShow==true) return;
+			
+			Talent.app.request("apibox:getProjects").done(function(resp) {
+				if(resp.flag==false) return;
+				self.projectSelectView = new ProjectSelectView({model:new Talent.Model({"projects":resp.message})});
+				self.projectRegion.show(self.projectSelectView);
+				self.listenTo(self.projectSelectView,"choice:project",self.chageProject)
+				self.$(".project-select").show();
+				self.isProjectRegionShow = true;
+			});
+		},
+		chageProject:function(project){
+			this.$(".project").val(project.name).attr("id",project.id);
+			this.$(".project-select").hide();
+			this.isProjectRegionShow = false;
 		},
 		onClose: function() {}
 	});

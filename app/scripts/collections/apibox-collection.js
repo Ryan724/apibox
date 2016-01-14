@@ -8,6 +8,24 @@ define(['talent'], function(Talent) {
 				deferred.resolve(resp);
 			});
 			return deferred;
+		},
+		getProjects:function(){
+			var deferred = new Talent.$.Deferred;
+			this.fetch({
+				"url": "api/project/queryall"
+			}).done(function(resp) {
+				deferred.resolve(resp);
+			});
+			return deferred;
+		},
+		addProject:function(options){
+			var deferred = new Talent.$.Deferred();
+            var model = new Talent.Model();
+            model.url = "/api/project/add";
+            model.save(options).done(function(resp) {
+                deferred.resolve(resp);
+            });
+            return deferred.promise();
 		}
 	});
 });

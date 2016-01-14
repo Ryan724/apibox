@@ -164,6 +164,8 @@
 .project-page .project-item{
 	padding-left: 10px;
 	border-bottom: 1px solid #e1e1e1;
+	font-size: 14px;
+	line-height: 20px;
 }
 .projects{
 	height:200px; 
@@ -188,6 +190,7 @@
 }
 .project-section{
 	font-size: 14px;
+	margin-top: 10px;
 }
 .bottom-right-btns{
 	position: absolute;
