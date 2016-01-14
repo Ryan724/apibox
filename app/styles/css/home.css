@@ -2,9 +2,8 @@ html{
    font-family: "arial","黑体",sans-serif;
 }
 html,
-body,
-.content{
-	height: 100%;
+body{
+	background-color: #f3f3f3;
 }
 body{
 	/*width:1000px;*/

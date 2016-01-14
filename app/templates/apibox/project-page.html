@@ -1,0 +1,34 @@
+<div class="p-step1">
+<div class="add-project">
+	<span>+ 新增项目</span>
+</div>
+<div class="projects">
+	<ul>
+	<% _.each(projects,function(item,index){%>
+		<li id="<%=item.id%>" class="project-item">
+			<span class="name"><%=item.name%></span>
+			<span class="desc"><%=item.desc%></span>
+		</li>
+	<%})%>
+	</ul>
+</div>
+</div>
+<div class="p-step2">
+	<div class="back-project">
+		<span>&lt;返回</span>
+	</div>
+	<ul class="project-section">
+		<li>
+			<span>项目名称</span>
+			<input type="text" placeholder="请输入项目名称" style="width:250px;box-sizing: border-box;"/>
+		</li>
+		<li style="margin-top:20px;">
+			<span style="float: left; margin:10px 5px 0 0;">项目描述</span>
+			<textarea placeholder="请输入项目描述" style="width:250px;height:110px; box-sizing: border-box;resize:'none'"></textarea>
+		</li>
+	</ul>
+	<div class="small-btns bottom-right-btns">
+		<span class="btn btn-blue">下一步</span>
+		<span class="btn btn-grey">取消</span>
+	</div>
+</div>

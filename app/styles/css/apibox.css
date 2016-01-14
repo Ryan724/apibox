@@ -50,3 +50,147 @@
 	width: 198px;
 	margin-left:-30px;
 }
+
+/*--------------------------------------------zhengpengjie--------------------------------------------*/
+.box-header{
+	height:70px;
+	border:1px solid #000;
+	margin: 2px;
+}
+.create-api{
+	background-color: #fff;
+	width: 1200px;
+	margin: 30px auto;
+	border-top:2px solid #8ab7eb;
+	padding: 1px;
+	font-size: 18px;
+}
+.c-step{
+	margin: 20px auto;
+	width:600px;
+}
+.c-step>div{
+	margin-bottom: 40px;
+	position: relative;
+}
+.c-step>div>span{
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+}
+.c-step input{
+	width:390px;
+	height: 36px;
+	border: 1px solid #DBDADA;
+	border-radius: 2px;
+	padding-left: 10px;
+}
+.c-step textarea{
+	padding: 10px; 
+	width: 380px;
+	max-width: 380px;
+	height: 100px;
+	border: 1px solid #DBDADA;
+	border-radius: 2px;
+}
+.icons-down{
+	width: 20px !important;
+	height: 10px;
+	background: url(/images/icons.png) no-repeat -10px -20px;
+	position: absolute;
+    top: 16px;
+    right: 105px;
+}
+.project-select{
+	display: none;
+	position: absolute;
+    margin-left: 105px;
+    padding: 0;
+    background-color: #fff;
+    width: 400px;
+    z-index: 2;
+    border: 1px solid #e1e1e1;
+}
+.c-step .btns{
+	width: 250px;
+	margin: 0 auto;
+}
+.small-btns{
+	width: 150px;
+	margin: 0 auto;
+}
+.c-step .small-btns .btn,
+.c-step .btns .btn{
+	display: inline-block;
+	width:110px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 14px;
+}
+.c-step .small-btns .btn{
+	width:70px;
+	height: 30px;
+	line-height: 30px;
+}
+.c-step .small-btns .btn-blue,
+.c-step .btns .btn-blue{
+	background-color: #5093e1;
+}
+.c-step .small-btns .btn-blue:hover,
+.c-step .btns .btn-blue:hover{
+	background-color: #3B689B;
+}
+.c-step .small-btns .btn-grey,
+.c-step .btns .btn-grey{
+	color: #000;
+	background-color: #e1e1e1;
+}
+.c-step .small-btns .btn-grey:hover,
+.c-step .btns .btn-grey:hover{
+	background-color: #B8B8B8;
+}
+.project-page .back-project,
+.project-page .add-project{
+	padding-left: 10px;
+	font-size: 14px;
+	height:30px;
+	line-height: 30px;
+	color: #328AED;
+	background-color: #e3effc;
+}
+.project-page .project-item{
+	padding-left: 10px;
+	border-bottom: 1px solid #e1e1e1;
+}
+.projects{
+	height:200px; 
+	overflow-y:auto;
+}
+.projects>ul{
+	/*height:100px; */
+	padding:0;
+}
+.project-item{
+	height: 40px;
+}
+.project-item>span{
+	display: block;
+}
+.project-item>.desc{
+	color: #e1e1e1;
+}
+.project-page .p-step2{
+	display: none;
+	height:250px;
+}
+.project-section{
+	font-size: 14px;
+}
+.bottom-right-btns{
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
