@@ -1,6 +1,6 @@
 .DS_Store
 /.idea
-/apilib
+/apilib/*
 /node_modules/
 /app/scripts/templates/
 /release
