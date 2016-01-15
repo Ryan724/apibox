@@ -1,0 +1,53 @@
+<div class="interface-api">
+	<ul>
+		<li>
+			<span>接口名称</span>
+			<span class="api-name"><%=config.name%></span>
+			<input type="text" class="api-name-edit"/>
+		</li>
+		<li style="position:relative;">
+			<span>项目</span>
+			<span class="api-project"><%=config.projectName%></span>
+			<section  class="api-project-edit">
+				<input type="text" class="project" placeholder="请选择项目"  readonly="readonly"/>
+				<span class="icons-down"></span>
+				<div class="project-select"></div>
+			</section>
+		</li>
+		<li>
+			<span style="float: left; margin:10px 50px 0 0;">接口描述</span>
+			<pre><%=config.desc%></pre>
+			<textarea class="api-desc-edit"  placeholder="请输入接口描述"></textarea>
+		</li>
+		<li >
+			<span>接口路劲</span>
+			<span class="api-url"><%=config.url%></span>
+			<input type="text" class="api-url-edit" class="api-name"/>
+		</li>
+		<li>
+			<span>请求方式</span>
+			<span class="api-method"><%=config.method%></span>
+			<input type="text" class="api-method-edit" class="api-name"/>
+		</li>
+		<li>
+			<span style="float: left; margin:10px 50px 0 0;">请求数据</span>
+			<pre><%=request%></pre>
+			<textarea   class="api-req-deit" placeholder="请输入接口描述"></textarea>
+		</li>
+		<li>
+			<span style="float: left; margin:10px 50px 0 0;">响应数据</span>
+			<pre><%=request%></pre>
+			<textarea   class="api-rsp-edit" placeholder="请输入接口描述"></textarea>
+		</li>
+	</ul>
+	<div class="data-deal">
+		<div class="data-mock-btn">
+			<span>数据Mock</span>
+		</div>
+		<div class="server-check-btn">
+			<span>Sever数据校验</span>
+		</div>
+	</div>
+	<div class="data-layer data-layer-data-layer">
+	</div>
+</div>

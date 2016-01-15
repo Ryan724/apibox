@@ -1,4 +1,11 @@
-define(['talent', 'templates/apibox', "views/apibox/project-select-view"], function(Talent, jst, ProjectSelectView) {
+define(['talent',
+ 'templates/apibox',
+  "views/apibox/project-select-view",
+  "views/apibox/interface-page-view"], 
+  function(Talent,
+   jst,
+    ProjectSelectView,
+    InterfacePageView) {
 	/**
 	 * Inner main view class
 	 * @class HomeView~MainView
@@ -8,7 +15,8 @@ define(['talent', 'templates/apibox', "views/apibox/project-select-view"], funct
 		template: jst['apibox/index-page'],
 		className: 'home-page-container',
 		regions: {
-			projectRegion: ".project-select"
+			projectRegion: ".project-select",
+			contentRegion:".box-content"
 		},
 		events: function() {
 			var events = {};
@@ -30,12 +38,15 @@ define(['talent', 'templates/apibox', "views/apibox/project-select-view"], funct
 		onRender: function() {},
 		onShow: function() {
 			this.$(".next-page").hide();
+			this.showInterface();
 		},
 		createApi: function(e) {
+			var self = this;
 			var config = {
 				"name": this.$(".api-name").val(),
 				"desc": this.$(".api-desc").val(),
 				"project": this.$(".project").attr("id"),
+				"projectName": this.$(".project").val(),
 				"url": this.$(".api-url").val(),
 				"method": this.$(".method").attr("id")
 			};
@@ -45,8 +56,23 @@ define(['talent', 'templates/apibox', "views/apibox/project-select-view"], funct
 				"response": this.$(".api-rsp").val()
 			}
 			Talent.app.request("apibox:addApi",api).done(function(resp) {
-				console.log(resp)
+				if(resp.flag){
+					self.showInterface(resp.message);
+				}
 			});
+		},
+		getInterfaceData:function(pid,id){
+			Talent.app.request("apibox:getApi",{pid:pid,id:id}).done(function(resp) {
+				console.log(resp);
+			});
+		},
+		showInterface:function(data){
+			data ={"config":{"name":"1111111","desc":"111111111","projectName":"projectName","project":"1c67bb1faaf0c0255d71c8f4bc58e846","url":"11111111","method":"GET","createTime":1452826846748,"id":"bbe36fe19baf62630e3108a481a9a76f"},"request":"11111","request":"111111"}
+			if(data){
+				this.interfacePageView = new InterfacePageView({model:new Talent.Model(data)});
+				this.contentRegion.show(this.interfacePageView);
+				this.listenTo(this.interfacePageView,"","xx")
+			}
 		},
 		showNextStep: function(e) {
 			//校验值

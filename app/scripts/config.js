@@ -9,7 +9,7 @@ require.config({
 		,"talent" : 'vendor/components/talent/index'
 		,"paginator" : 'vendor/plugins/paginator'
 		
-		,"createpage" : 'vendor/plugins/jquery.page'//翻页插件
+		,"jsdiff" : 'vendor/plugins/jsdiff'
 		,"datatables": 'vendor/plugins/jquery.dataTables'//表格插件
 		,"md5": 'vendor/plugins/MD5'
 
