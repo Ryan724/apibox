@@ -13,6 +13,7 @@ define(['talent',
 				var events = {};
 				events["click .diff-btn"] = this.diffDataDeal;
 				events["click .cancle-diff-btn"] = this.cancleDiff;
+				events["keyup .server-data"] =this.formatServerData;
 				return events;
 			},
 			initialize: function() {
@@ -29,6 +30,17 @@ define(['talent',
 				var diff = jsDiff[this.diffType[2]](apiData,serverData);
 				var diffData = this.diffTemplate({diff:diff})
 				this.$(".diff-data").html("<pre>"+diffData+"</pre>")
+			},
+			formatServerData:function(e){
+				var serverData = this.$(".server-data>pre").html();
+				try{
+					JSON.parse(serverData);
+					serverData = _.formatJson(serverData); 
+					this.$(".server-data").html("<pre>"+serverData+"</pre>")
+				}catch(err){
+					console.log("修改data非标准JSON");
+				}
+				
 			},
 			cancleDiff: function() {
 				this.trigger("cancle:diff")

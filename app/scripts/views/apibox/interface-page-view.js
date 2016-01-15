@@ -19,7 +19,7 @@ define(['talent',
 			},
 			initialize: function() {},
 			onShow:function(){
-				this.serverCheckShow();
+				// this.serverCheckShow();
 			},
 			dataMockShow:function(e){
 				// this.$(".data-layer").show();

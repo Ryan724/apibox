@@ -38,7 +38,7 @@ define(['talent',
 		onRender: function() {},
 		onShow: function() {
 			this.$(".next-page").hide();
-			this.showInterface();
+			// this.showInterface();
 		},
 		createApi: function(e) {
 			var self = this;
