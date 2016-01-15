@@ -1,0 +1,59 @@
+/*----------------------header css---------------------------------*/
+.indexheader {
+	width: 100%;
+	background: white;
+	position: relative;
+	padding: 24px 0;
+}
+.header-content{
+	width: 1130px;
+	margin: 0 auto;
+}
+.indexheader .logo {
+	display: inline-block;
+	width: 110px;
+	height: 40px;
+	float: left;
+	background: url(../../images/api_logo.png) no-repeat 0px 9px;
+}
+.indexheader .seach-nr {
+	width: 824px;
+	height: 36px;
+	float: left;
+	line-height: 40px;
+	color: #aeaeae;
+	border:1px solid #dddddd;
+	background: #fafafa;
+}
+.indexheader .search {
+	display: inline-block;
+	width: 53px;
+	height: 40px;
+	float: left;
+	border-right: 1px solid #dddddd;
+	background: url(../../images/seach-logo.png) no-repeat;
+}
+.indexheader .new-button {
+	display: inline-block;
+	width: 110px;
+	height: 40px;
+	float: left;
+	border: none;
+	background: #5093e1;
+	color:white;
+	border-radius: 2px;
+	margin-left: 20px;
+}
+.indexheader:after {
+	content: " ";
+	display: block;
+	clear: both;
+}
+
+/*content-----css*/
+.content{
+	min-width: 1130px;
+	width: 100%;
+	height: 498px;
+	background: url(../../images/head_img.png) center;
+}
