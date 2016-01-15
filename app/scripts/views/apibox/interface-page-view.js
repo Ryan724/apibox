@@ -1,10 +1,12 @@
 define(['talent',
 		'templates/apibox',
-		'views/apibox/server-check-view'
+		'views/apibox/server-check-view',
+		'views/apibox/mock-data-view'
 	],
 	function(Talent,
 		jst,
-		ServerCheckView) {
+		ServerCheckView,
+		MockDataView) {
 		return Talent.Layout.extend({
 			template: jst['apibox/interface-page'],
 			regions:{
@@ -22,8 +24,10 @@ define(['talent',
 				// this.serverCheckShow();
 			},
 			dataMockShow:function(e){
-				// this.$(".data-layer").show();
-
+				this.$(".data-layer").show();
+				this.mockDataView = new MockDataView({model:new Talent.Model({"data":'{"a":1,"b":{"d":2}}'})});
+				this.dataLayerRegion.show(this.mockDataView)
+				this.listenTo(this.mockDataView,"cancle:mock",this.closeDataRegionClose);
 			},
 			serverCheckShow:function(e){
 				this.$(".data-layer").show();

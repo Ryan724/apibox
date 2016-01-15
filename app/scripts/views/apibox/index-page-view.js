@@ -6,11 +6,6 @@ define(['talent',
    jst,
     ProjectSelectView,
     InterfacePageView) {
-	/**
-	 * Inner main view class
-	 * @class HomeView~MainView
-	 * @extends {Backbone.View}
-	 */
 	var MainView = Talent.Layout.extend({
 		template: jst['apibox/index-page'],
 		className: 'home-page-container',
@@ -38,7 +33,7 @@ define(['talent',
 		onRender: function() {},
 		onShow: function() {
 			this.$(".next-page").hide();
-			// this.showInterface();
+			this.showInterface();
 		},
 		createApi: function(e) {
 			var self = this;

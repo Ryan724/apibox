@@ -128,6 +128,7 @@
     z-index: 2;
     border: 1px solid #e1e1e1;
 }
+.mock-view  .btns,
 .check-view .btns,
 .c-step .btns{
 	width: 250px;
@@ -137,6 +138,7 @@
 	width: 150px;
 	margin: 0 auto;
 }
+.mock-view  .btns .btn,
 .check-view .btns .btn,
 .c-step .small-btns .btn,
 .c-step .btns .btn{
@@ -155,22 +157,26 @@
 	height: 30px;
 	line-height: 30px;
 }
+.mock-view  .btns .btn-blue,
 .check-view .btns .btn-blue,
 .c-step .small-btns .btn-blue,
 .c-step .btns .btn-blue{
 	background-color: #5093e1;
 }
+.mock-view  .btns .btn-blue:hover,
 .check-view .btns .btn-blue:hover,
 .c-step .small-btns .btn-blue:hover,
 .c-step .btns .btn-blue:hover{
 	background-color: #3B689B;
 }
+.mock-view  .btns .btn-grey,
 .check-view .btns .btn-grey,
 .c-step .small-btns .btn-grey,
 .c-step .btns .btn-grey{
 	color: #000;
 	background-color: #e1e1e1;
 }
+.mock-view  .btns .btn-grey:hover,
 .check-view .btns .btn-grey:hover,
 .c-step .small-btns .btn-grey:hover,
 .c-step .btns .btn-grey:hover{
@@ -285,6 +291,7 @@
 	margin-top:  10px;
 	margin-right:0 !important;
 }
+.mock-view .data-ul>li,
 .check-view .data-ul>li{
 	display: inline-block;
 	width: 300px;
@@ -292,6 +299,7 @@
     float: left;
     margin-bottom: 30px;
 }
+.mock-view .data-ul>li>span,
 .check-view .data-ul>li>span{
 	text-align: center;
     display: block;	
@@ -317,4 +325,18 @@
 	background: #eaf2c2;
 	color: #406619;
 	text-decoration: none;
+}
+.mock-view .data-ul{
+	width: 600px;
+	margin: 0 auto;
+	margin-top: 30px;
+    padding: 0;
+}
+.mock-view .data-ul>li{
+	width: 100%;
+	float: none;
+}
+.create-url-btn{
+    display: block;
+    margin-bottom: 10px;
 }
