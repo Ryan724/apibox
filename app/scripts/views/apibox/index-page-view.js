@@ -9,7 +9,7 @@ define(['talent',
 	Header,
 	AddInterface,
 	Content,
-	InterFacePage) {
+	InterfacePageView) {
 	var MainView = Talent.Layout.extend({
 		template: jst['apibox/index-page'],
 		className: 'home-page-container',
@@ -42,12 +42,7 @@ define(['talent',
 				});
 			this.contentView = new Content({
 				model:new ContentView()
-			}); 
-			this.apiContentView = new InterFacePage({
-				model:new Talent.Model({
-					item:"1"
-				})
-			})
+			});
 			this.listenTo(this.headerView,"seach:apicontent",function(data){//搜索
 				self.getInterfaceData(data.pid,data.id)
 			});
@@ -59,7 +54,6 @@ define(['talent',
 				self.icontent.show(self.contentView);
 			});
 			this.listenTo(this.addInterfaceView, "add:content", function() {
-				// var countString = self.newCount();
 				this.contentView.model.set("count",countString);
 				self.icontent.show(self.contentView);
 
@@ -67,15 +61,16 @@ define(['talent',
 		},
 		getInterfaceData:function(pid,id){
 			var self =this;
-			Talent.app.request("apibox:getApi",{pid:pid,id:id}).done(function(resp) {
+			Talent.app.request("apibox:getApi",{"pid":pid,"id":id}).done(function(resp) {
 				if(resp.flag) self.showInterface(resp.message)
 			});
 		}, 
 		showInterface:function(data){
 			var self=this;
 			if(data){
-				data.response=_.formatJson(data.response);
-				data.request=_.formatJson(data.request);
+				data = JSON.parse(data);
+				data.request = _.formatJson(data.request);
+				data.response = _.formatJson(data.response);
 				this.interfacePageView = new InterfacePageView({model:new Talent.Model(data)});
 				this.icontent.show(this.interfacePageView);
 				this.listenTo(this.interfacePageView,"","xx")
@@ -83,10 +78,6 @@ define(['talent',
 		},
 		newCount:function(){
 			var self = this;
-			// self.count = 0;
-			// Talent.app.request("apibox:getAllData").done(function(resp) {
-			// 	self.Data = jQuery.parseJSON(resp.message);
-			// });
 			_.each(self.Data,function(list){
 				self.count +=list.apis.length;
 			});
