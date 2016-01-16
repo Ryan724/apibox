@@ -15,13 +15,18 @@ define(['talent','templates/common'], function(Talent, jst) {
 			"seach":'input[class=seach-nr]'
 			,"listChildClick":"ul[class=seachlist-nr]"
 			,"search":".search"
+			,"newAPI":"input[class=new-button]"
 		},
 		events:function(){
 			var events = {};
 			events['keyup '+this.ui.seach] = "seachClick";
 			events['click '+this.ui.listChildClick] = "listClick";
 			events['click '+this.ui.search] = "toSeach";
+			events['click '+this.ui.newAPI] = "newAPI";
 			return events;
+		}
+		,newAPI:function(){//点击新建
+
 		}
 		,toSeach:function(){//点击搜索
 			event.stopPropagation();
@@ -30,11 +35,7 @@ define(['talent','templates/common'], function(Talent, jst) {
 			data.project = $("input[class=seach-nr]").attr("data-project");
 			$("input[class=seach-nr]").attr("data-id","");
 			$("input[class=seach-nr]").attr("data-project","");
-
-
-
-
-
+			//跳转
 
 		}
 		,listClick:function(e){//点击内容
