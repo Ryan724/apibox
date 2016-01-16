@@ -59,6 +59,13 @@ define(['talent',
 				var val=node.val();
 				node.hide();
 				node.prev().text(val).show();
+				debugger;
+				Talent.app.request("apibox:updateData",api).done(function(resp) {
+				console.log(resp)
+				if(resp.flag){
+					self.showInterface(resp.message);
+				}
+			});
 			}
 		});
 
