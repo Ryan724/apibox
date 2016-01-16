@@ -1,0 +1,39 @@
+/*footer---------css*/
+.indexFoot{
+	padding: 85px 0;
+	background: white;
+}
+.foot-content{
+	width: 900px;
+	height: 250px;
+	margin: 0 auto;
+}
+.foot-content>div{
+	float: left;
+	width: 300px;
+	text-align: center;
+	font-weight: "微软雅黑";
+}
+.foot-content-logo1,.foot-content-logo2,.foot-content-logo3{
+	height: 98px;
+} 
+.foot-content-logo1{
+	background: url(../../images/api-logo-j.png) no-repeat 113px 0px;
+}
+.foot-content-logo2{
+	background: url(../../images/api-logo-k.png) no-repeat 102px 0px;
+}
+.foot-content-logo3{
+	background: url(../../images/api-logo-l.png) no-repeat 106px 0px;
+}
+.foot-content-title{
+	font-weight: bold;
+	font-size: 13px;
+	color: #333333;
+	line-height: 45px;
+}
+.foot-content-subtitle{
+	font-size: 12px;
+	color: #999999;
+	line-height: 20px;
+}

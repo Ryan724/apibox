@@ -2,10 +2,12 @@ define(['talent'
 	,'templates/home'
 	,'views/common/page-regions/header-view'
 	,'views/common/page-regions/content-view'
+	,'views/common/page-regions/footer-view'
 ],function(Talent
 	,jst
 	,Header
 	,Content
+	,Footer
 ) {
 	/**
 	 * Inner main view class
@@ -18,7 +20,10 @@ define(['talent'
 	var content = Talent.Model.extend({
 			defaults:{}
 	});
-	var data = [{"desc": "这是一个轻便的接口管理器\n",
+	var foot = Talent.Model.extend({
+			defaults:{}
+	});
+	var datalist = [{"desc": "这是一个轻便的接口管理器\n",
 				"name": "apibox项目",
 				"createTime": 1452768745220,
 				"id": "1c67bb1faaf0c0255d71c8f4bc58e846",
@@ -51,10 +56,15 @@ define(['talent'
 		,className: 'home-page-container'
 		,initialize: function() {
 			this.headerView = new Header({
-				model:new header()
+				model:new header({
+					data:datalist
+				})
 			});
 			this.contentView = new Content({
 				model:new content()
+			});
+			this.footerView = new Footer({
+				model:new foot()
 			});
 		}
 		,events:function(){
@@ -64,22 +74,20 @@ define(['talent'
 		,regions: {
 			"header":".indexheader"
 			,"icontent":".indexContent"
+			,"footer":".indexFoot"
 		}
 		,onRender: function(){}
 		,onShow: function() {
 			this.header.show(this.headerView);
-			this.icontent.show(this.contentView)
+			this.icontent.show(this.contentView);
+			this.footer.show(this.footerView);
 
-		}
-		,clkSP:function(e){
-			Talent.app.request("apibox:getClassData").done(function(resp){
-				console.log(resp)
-			});
 		}
 		,onClose:function(){}
 	});
 	return Talent.BasePageView.extend({
-		mainViewClass : MainView
+		layout:"empty-layout"
+		,mainViewClass : MainView
 		,pageTitle: 'apibox'
 	});
 });
