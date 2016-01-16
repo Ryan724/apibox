@@ -49,7 +49,6 @@ define(['talent',
 				self.icontent.show(self.contentView);
 			});
 			this.listenTo(this.addInterfaceView, "add:content", function() {
-				var countString = self.newCount();
 				this.contentView.model.set("count",countString);
 				self.icontent.show(self.contentView);
 
@@ -58,9 +57,6 @@ define(['talent',
 		newCount:function(){
 			var self = this;
 			self.count = 0;
-			Talent.app.request("apibox:getAllData").done(function(resp) {
-				self.Data = jQuery.parseJSON(resp.message);
-			});
 			_.each(self.Data,function(list){
 				self.count +=list.apis.length;
 			});
