@@ -89,7 +89,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 					}
 				}
 			}else{//指定项目 检索接口
-				var pointProjectId = $(".projectName").attr("data-id")
+				var pointProjectId = $(".projectName").attr("data-id");
 				var findData = _.find(allData,function(list){
 					return list.id==pointProjectId;
 				});

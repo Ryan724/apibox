@@ -28,10 +28,10 @@ define(['talent',
 		onRender: function() {
 			var self = this;
 			//--------------------------------实例化--------------------------------------
-			this.headerView = new Header();
-			this.contentView = new Content();
-			this.apiContentView = new InterFacePage();
-			this.addInterfaceView = new AddInterface();
+			this.headerView = new Header();  				//---头header
+			this.contentView = new Content();				//---主页content
+			this.apiContentView = new InterFacePage();		//?
+			this.addInterfaceView = new AddInterface();		//---新建页面content
 			//-------------------------------事件监听-------------------------------------
 
 			this.listenTo(this.headerView,"seach:apicontent",function(data){//搜索
