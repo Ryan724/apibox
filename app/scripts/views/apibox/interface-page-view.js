@@ -60,11 +60,11 @@ define(['talent',
 				var val=node.val();
 				node.hide();
 				node.prev().text(val).show();
-				if (node.hasClass("api-req-deit")) {
-					self.model.set({"request":val});
-				}else if(node.hasClass("api-rsp-edit")){
-					self.model.set({"response":val})
-				};
+				// if (node.hasClass("api-req-deit")) {
+				// 	self.model.set({"request":val});
+				// }else if(node.hasClass("api-rsp-edit")){
+				// 	self.model.set({"response":val})
+				// };
 				// var data={
 				// 	config:this.model.get("config"),
 				// 	request:this.model.get("request"),

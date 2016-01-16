@@ -22,7 +22,7 @@ define(['talent',
 		initialize: function() {
 			var self = this;
 			Talent.app.request("apibox:getAllData").done(function(resp) {
-				self.Data = jQuery.parseJSON(resp.message);
+				self.Data = resp.message==""?"":JSON.parse(resp.message);
 			});
 			this.count = 0;
 		},
