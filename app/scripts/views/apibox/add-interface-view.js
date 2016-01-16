@@ -6,8 +6,8 @@ define(['talent',
    jst,
     ProjectSelectView,
     InterfacePageView) {
-	var MainView = Talent.Layout.extend({
-		template: jst['apibox/index-page'],
+	return Talent.Layout.extend({
+		template: jst['apibox/add-interface-page'],
 		className: 'home-page-container',
 		regions: {
 			projectRegion: ".project-select",
@@ -26,6 +26,7 @@ define(['talent',
 			return events;
 		},
 		initialize: function() {
+			console.log(11111111)
 			this.model = new Talent.Model({
 				isNext: false
 			});
@@ -119,9 +120,5 @@ define(['talent',
 			this.isProjectRegionShow = false;
 		},
 		onClose: function() {}
-	});
-	return Talent.BasePageView.extend({
-		mainViewClass: MainView,
-		pageTitle: 'apibox'
 	});
 });

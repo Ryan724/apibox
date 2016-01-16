@@ -26,15 +26,20 @@ define(['talent','templates/common'], function(Talent, jst) {
 			return events;
 		}
 		,newAPI:function(){//点击新建
-
+			this.resetInput();
+			this.trigger("add:interface");
+		}
+		,resetInput:function(){
+			$("input[class=seach-nr]").val("");
+			$("input[class=seach-nr]").attr("data-id","");
+			$("input[class=seach-nr]").attr("data-project","");
 		}
 		,toSeach:function(){//点击搜索
 			event.stopPropagation();
 			var data = {};
 			data.id = $("input[class=seach-nr]").attr("data-id");
 			data.project = $("input[class=seach-nr]").attr("data-project");
-			$("input[class=seach-nr]").attr("data-id","");
-			$("input[class=seach-nr]").attr("data-project","");
+			this.resetInput();
 			//跳转
 
 		}

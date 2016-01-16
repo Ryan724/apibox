@@ -71,7 +71,6 @@ define(['talent'
 			var flag=true;
 			var url=this.$(".api-url").val();
 			var m = url.match(/(http[^"]*)"/g);
-			debugger;
 			if(m){}
 			var method=this.$(".method").val();
 			var request=this.$(".api-req").val();
