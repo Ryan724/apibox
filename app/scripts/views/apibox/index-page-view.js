@@ -1,11 +1,13 @@
 define(['talent',
 	'templates/apibox',
-	'views/common/page-regions/header-view',
-	'views/apibox/add-interface-view'
+	'views/apibox/header-view',
+	'views/apibox/add-interface-view',
+	'views/apibox/content-view'
 ], function(Talent,
 	jst,
 	Header,
-	AddInterface) {
+	AddInterface,
+	Content) {
 	var datalist = [{
 		"desc": "这是一个轻便的接口管理器\n",
 		"name": "apibox项目",
@@ -52,14 +54,24 @@ define(['talent',
 					data: datalist
 				})
 			});
+			this.contentView = new Content({
+				model:new Talent.Model()
+			});
+			this.addInterfaceView = new AddInterface();
 			this.listenTo(this.headerView, "add:interface", function() {
-				self.addInterfaceView = new AddInterface();
 				self.icontent.show(self.addInterfaceView);
+			});
+			this.listenTo(this.headerView,"go:indexPage",function(){
+				self.icontent.show(self.contentView);
+			});
+			this.listenTo(this.addInterfaceView, "add:content", function() {
+				self.icontent.show(self.contentView);
 			});
 		},
 		onRender: function() {},
 		onShow: function() {
 			this.header.show(this.headerView);
+			this.icontent.show(this.contentView);
 		},
 		onClose: function() {}
 	});

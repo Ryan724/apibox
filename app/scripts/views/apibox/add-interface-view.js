@@ -26,7 +26,6 @@ define(['talent',
 			return events;
 		},
 		initialize: function() {
-			console.log(11111111)
 			this.model = new Talent.Model({
 				isNext: false
 			});
@@ -86,7 +85,7 @@ define(['talent',
 			if (this.model.set("isNext")) this.$(".next-page").show();
 		},
 		backIndexPage: function(e) {
-			alert("回到解放前")
+			this.trigger("add:content");
 		},
 		showProjectInput: function(e) {
 			var self = this;
