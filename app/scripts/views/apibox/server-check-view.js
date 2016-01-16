@@ -13,7 +13,7 @@ define(['talent',
 				var events = {};
 				events["click .diff-btn"] = this.diffDataDeal;
 				events["click .cancle-diff-btn"] = this.cancleDiff;
-				events["keyup .server-data"] =this.formatServerData;
+				events["blur .server-data"] =this.formatServerData;
 				return events;
 			},
 			initialize: function() {
@@ -49,7 +49,7 @@ define(['talent',
 				this.$(".diff-data").html("<pre>"+diffData+"</pre>")
 			},
 			formatServerData:function(e){
-				var serverData = this.$(".server-data>pre").html();
+				var serverData = this.$(".server-data>pre").text();
 				try{
 					JSON.parse(serverData);
 					serverData = _.formatJson(serverData); 
