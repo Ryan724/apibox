@@ -16,8 +16,7 @@ define(['talent',
 				var data =_.formatJson(this.model.get("data"));
 				this.model.set("data",data);
 			},
-			onShow: function() {
-			},
+			onShow: function() {},
 			createMockUrl:function(){
 				var mockData = this.$(".mock-data").html();
 			},

@@ -41,8 +41,6 @@ define(['talent',
 			addProjectHide:function(){
 				this.$(".p-step2").hide();
 				this.$(".p-step1").show();
-			},
-			onShow:function(){
 			}
 		});
 
