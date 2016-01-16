@@ -16,16 +16,18 @@ define(['talent',
 				var events = {};
 				events["click .data-mock-btn"] = this.dataMockShow;
 				events["click .server-check-btn"] = this.serverCheckShow;
-
 				return events;
 			},
-			initialize: function() {},
+			initialize: function() {
+				debugger;
+			},
 			onShow:function(){
 				// this.serverCheckShow();
 			},
 			dataMockShow:function(e){
+				var self=this;
 				this.$(".data-layer").show();
-				this.mockDataView = new MockDataView({model:new Talent.Model({"data":'{"a":1,"b":{"d":2}}'})});
+				this.mockDataView = new MockDataView({model:new Talent.Model({"data":self.model.get("response")})});
 				this.dataLayerRegion.show(this.mockDataView)
 				this.listenTo(this.mockDataView,"cancle:mock",this.closeDataRegionClose);
 			},

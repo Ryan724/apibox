@@ -31,13 +31,20 @@
 }
 .select-icon{
 	display: inline-block;
-	width: 15px;
-	height: 10px;
-	border: 1px solid red;
+	width: 13px;
+	height: 7px;
 	background: url(../../images/select-icon.png);
 	position: absolute;
-	top: 5px;
+	top: 9px;
 	right:5px;
+}
+.key-box{
+	min-width: 100px;
+}
+.edit-next{
+	border: 1px solid red;
+	height: 20px;
+	width: 100px;
 }
 .data-list{
 	width: 198px;
@@ -77,6 +84,9 @@
 .c-step>div{
 	margin-bottom: 40px;
 	position: relative;
+}
+.box-mian .border-red{
+	border: 1px solid red;
 }
 .interface-api>ul>li>span:nth-child(1),
 .c-step>div>span{
@@ -253,13 +263,18 @@
 }
 .pre-page,.next-page{
 	position: absolute;
+	width: 30px;
+  	height: 30px;
 	top:10px;
+	background-image: url(../../images/icons.png);
 }
 .next-page{
 	right:30px;
+	background-position: -72px -40px;
 }
 .pre-page{
 	left: 30px;
+	background-position: -17px -40px;
 }
 .api-name-edit, .api-method-edit, .api-project-edit, .api-desc-edit, .api-url-edit, .api-req-deit, .api-rsp-edit{
 	display: none;
