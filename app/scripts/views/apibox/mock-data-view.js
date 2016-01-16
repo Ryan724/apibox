@@ -17,16 +17,17 @@ define(['talent',
 				this.model.set("data",data);
 			},
 			onShow: function() {
+				var self=this;
 				$('body').click(function(e){
-                var node=this.$(e.target).attr("data-name");
-                var mockData=this.$(".mock-data pre").text();
+                var node=self.$(e.target).attr("data-name");
+                var mockData=self.$(".mock-data pre").text();
 	                if(!node){
 	                	try{
 	                		if(JSON.parse(mockData)){
-	                			this.$(".mock-data").removeClass("border-red");
+	                			self.$(".mock-data").removeClass("border-red");
 	                		};
 	                	}catch(erro){
-	                		this.$(".mock-data").addClass("border-red");
+	                		self.$(".mock-data").addClass("border-red");
 	                	}
                 	}
             	});

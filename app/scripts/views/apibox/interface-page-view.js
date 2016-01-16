@@ -59,23 +59,28 @@ define(['talent',
 				var node=this.$(e.currentTarget);
 				var val=node.val();
 				node.hide();
-				node.prev().text(val).show();
-				// if (node.hasClass("api-req-deit")) {
-				// 	self.model.set({"request":val});
-				// }else if(node.hasClass("api-rsp-edit")){
-				// 	self.model.set({"response":val})
-				// };
-				// var data={
-				// 	config:this.model.get("config"),
-				// 	request:this.model.get("request"),
-				// 	response:this.model.get("response")
-				// }
-			// 	Talent.app.request("apibox:updateData",api).done(function(resp) {
-			// 	console.log(resp)
-			// 	if(resp.flag){
-			// 		self.showInterface(resp.message);
-			// 	}
-			// });
+				// node.prev().text(val).show();
+				if (node.hasClass("api-req-deit")) {
+					self.model.set({"request":val});
+				}else if(node.hasClass("api-rsp-edit")){
+					self.model.set({"response":val})
+				};
+				var data={
+					config:this.model.get("config"),
+					request:this.model.get("request"),
+					response:this.model.get("response")
+				}
+				try{
+	                if(JSON.parse(val)){
+	                	val=_.formatJson(val);
+	                	node.prev().text(val).removeClass("border-red").show();
+	                };
+	            }catch(erro){
+	                	node.prev().text(val).addClass("border-red").show();
+	                }
+				Talent.app.request("apibox:updateData",data).done(function(resp) {
+					console.log(resp);
+				});
 			}
 		});
 
