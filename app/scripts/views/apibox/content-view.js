@@ -5,7 +5,8 @@ define(['talent',
 		jst) {
 		return Talent.ItemView.extend({
 			template: jst['apibox/content'],
-			initialize: function() {},
+			initialize: function() {
+			},
 			onShow:function(){}
 		});
 
