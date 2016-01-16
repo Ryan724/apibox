@@ -19,9 +19,7 @@ define(['talent',
 				return events;
 			},
 			initialize: function() {},
-			onShow:function(){
-				// this.serverCheckShow();
-			},
+			onShow:function(){},
 			dataMockShow:function(e){
 				var self=this;
 				this.$(".data-layer").show();
