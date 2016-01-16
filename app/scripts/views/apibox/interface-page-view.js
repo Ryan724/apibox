@@ -18,6 +18,8 @@ define(['talent',
 				var events = {};
 				events["click .data-mock-btn"] = this.dataMockShow;
 				events["click .server-check-btn"] = this.serverCheckShow;
+				events["click .data-edit"] = this.editData;
+				events["blur textarea"] = this.exitEditedData;
 				return events;
 			},
 			initialize: function() {},
@@ -45,6 +47,18 @@ define(['talent',
 			closeDataRegionClose:function(){
 				this.dataLayerRegion.close();
 				this.$(".data-layer").hide()
+			}
+			,editData:function(e){
+				var node=this.$(e.currentTarget);
+				var val=node.children("pre").text();
+				node.children("pre").hide();
+				node.children("textarea").val(val).show().focus();
+			}
+			,exitEditedData:function(e){
+				var node=this.$(e.currentTarget);
+				var val=node.val();
+				node.hide();
+				node.prev().text(val).show();
 			}
 		});
 
