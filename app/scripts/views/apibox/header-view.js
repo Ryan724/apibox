@@ -47,8 +47,16 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			event.stopPropagation();
 			var data = {};
 			data.id = $("input[class=seach-nr]").attr("data-id");
-			data.project = $("input[class=seach-nr]").attr("data-project");
+			data.pid = $("input[class=seach-nr]").attr("data-project");
 			this.resetInput();
+			$(".pro").attr("data-id","");
+			$(".pro").attr("data-project","");
+			$(".pro").text("");
+			$("input[class=seach-nr]").val("");
+			$(".seach-nr").width(825);
+			$("ul.seachlist-nr").width(825);
+			$(".pro").removeClass("project");
+			this.trigger("seach:apicontent",data);
 			//跳转
 
 		}

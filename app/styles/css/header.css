@@ -98,6 +98,7 @@ input.seach-nr{
 	padding: 0 8px;
 	font-size: 14px;
 	color: #aeaeae;
+	cursor: pointer;
 }
 .bordernone{
 	border: none;
