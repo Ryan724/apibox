@@ -24,9 +24,14 @@
 	line-height: 35px;
 	color: #aeaeae;
 	border:1px solid #dddddd;
+	outline-color: #dddddd;
 	background: #fafafa;
 	font-weight: normal;
 	position: relative;
+}
+input.seach-nr{
+	width: 814px;
+	padding-left: 10px;
 }
 .indexheader .search {
 	display: inline-block;
@@ -62,6 +67,7 @@
 	padding: 0;
 	background:rgba(240,238,238,0.9);
 }
+
 .seachlist{
 	margin: 0;
 	padding: 5px 0;
@@ -81,4 +87,18 @@
 }
 .seachlist-nr-subtitle{
 	color: #999999;
+}
+.project{
+	display: inline-block;
+	float: left;
+	height: 38px;
+	line-height: 40px;
+	border:1px solid #dddddd;
+	border-right: none;
+	padding: 0 8px;
+	font-size: 14px;
+	color: #aeaeae;
+}
+.bordernone{
+	border: none;
 }
