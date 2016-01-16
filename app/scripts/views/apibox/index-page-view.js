@@ -49,7 +49,6 @@ define(['talent',
 				self.icontent.show(self.contentView);
 			});
 			this.listenTo(this.addInterfaceView, "add:content", function() {
-				this.contentView.model.set("count",countString);
 				self.icontent.show(self.contentView);
 
 			});
@@ -57,19 +56,10 @@ define(['talent',
 		newCount:function(){
 			var self = this;
 			self.count = 0;
-			_.each(self.Data,function(list){
-				self.count +=list.apis.length;
+			_.each(self.headerView.model.get("Data"),function(list){
+				self.headerVcount +=list.apis.length;
 			});
-			var CountStr = [];
-			var numString = self.count.toString();
-			var ys = numString.length%3;
-			_.each(numString,function(item,index){
-				CountStr.unshift(item);
-				if(index>ys&&index<numString.length-2){
-					CountStr.unshift("，");
-				}
-			});
-			return CountStr.join("");
+			return self.count;
 		},
 		onShow: function() {
 			this.header.show(this.headerView);

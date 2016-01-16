@@ -32,6 +32,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			return events;
 		}
 		,goIndexPage:function(){
+			$(".seachlist-nr").empty().append(apiList);
 			this.trigger("go:indexPage");
 		}
 		,newAPI:function(){//点击新建
@@ -56,6 +57,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			$(".seach-nr").width(825);
 			$("ul.seachlist-nr").width(825);
 			$(".pro").removeClass("projectName");
+			$(".seachlist-nr").empty();
 			this.trigger("seach:apicontent",data);
 			//跳转
 
@@ -67,7 +69,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			if(projectId==""){
 				$(".pro").attr("data-id",thisId);
 				$(".pro").attr("data-project",projectId);
-				$(".pro").text($(target).find(".seachlist-nr-title").text());
+				$(".pro").text($(target).find(".seachlist-nr-title").attr("name"));
 				$(".pro").addClass("projectName");
 				$("input[class=seach-nr]").val("");
 				$(".seach-nr").width(816-$(".pro").width()-8);
@@ -75,7 +77,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			}else{
 				$("input[class=seach-nr]").attr("data-id",thisId);
 				$("input[class=seach-nr]").attr("data-project",projectId);
-				$("input[class=seach-nr]").val($(target).find(".seachlist-nr-title").text());
+				$("input[class=seach-nr]").val($(target).find(".seachlist-nr-title").attr("name"));
 			}
 			$(".pro").click(function(){
 				$(".pro").attr("data-id","");
@@ -99,14 +101,14 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 						inputIndex = inputIndex.substring(inputIndex.indexOf("@")+1);
 						_.each(allData,function(list){
 							if(list.name.indexOf(inputIndex)==0){
-								apiList+="<li class='seachlist' data-id='"+list.id+"' data-project=''><div class='seachlist-nr-title'>"+list.name+"</div><div class='seachlist-nr-subtitle'>"+ list.desc +"</div></li>"
+								apiList+="<li class='seachlist' data-id='"+list.id+"' data-project=''><div class='seachlist-nr-title' name='"+list.name+"'>"+list.name+"</div><div class='seachlist-nr-subtitle'>"+ list.desc +"</div></li>"
 							}
 						});
 					}else{
 						_.each(allData,function(list){
 							_.each(list.apis,function(listChild){
 								if(listChild.name.indexOf(inputIndex)==0){
-									apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title'>"+listChild.name+"            ---"+listChild.projectName+"</div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>"
+									apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title' name='"+listChild.name+"'>"+listChild.name+"<span class='proNamert'>"+listChild.projectName+"</span></div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>"
 								}
 							});
 						});
@@ -116,7 +118,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 				_.each(allData,function(list){
 					_.each(list.apis,function(listChild){
 						if(listChild.name.indexOf(inputIndex)==0&&listChild.project==$(".projectName").attr("data-id")){
-							apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title'>"+listChild.name+"            ---"+listChild.projectName+"</div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>"
+							apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title' name='"+listChild.name+"'>"+listChild.name+"<span class='proNamert'>"+listChild.projectName+"</span></div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>"
 						}
 					});
 				});
