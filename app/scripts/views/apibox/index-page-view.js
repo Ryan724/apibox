@@ -33,7 +33,7 @@ define(['talent',
 		onRender: function() {},
 		onShow: function() {
 			this.$(".next-page").hide();
-			this.showInterface();
+			// this.showInterface();
 		},
 		createApi: function(e) {
 			var self = this;
@@ -51,6 +51,7 @@ define(['talent',
 				"response": this.$(".api-rsp").val()
 			}
 			Talent.app.request("apibox:addApi",api).done(function(resp) {
+				console.log(resp)
 				if(resp.flag){
 					self.showInterface(resp.message);
 				}
@@ -62,7 +63,7 @@ define(['talent',
 			});
 		},
 		showInterface:function(data){
-			data ={"config":{"name":"1111111","desc":"111111111","projectName":"projectName","project":"1c67bb1faaf0c0255d71c8f4bc58e846","url":"11111111","method":"GET","createTime":1452826846748,"id":"bbe36fe19baf62630e3108a481a9a76f"},"request":"11111","request":"111111"}
+			// data ={"config":{"name":"1111111","desc":"111111111","projectName":"projectName","project":"1c67bb1faaf0c0255d71c8f4bc58e846","url":"11111111","method":"GET","createTime":1452826846748,"id":"bbe36fe19baf62630e3108a481a9a76f"},"request":"11111","request":"111111"}
 			if(data){
 				this.interfacePageView = new InterfacePageView({model:new Talent.Model(data)});
 				this.contentRegion.show(this.interfacePageView);
