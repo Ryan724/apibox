@@ -10,6 +10,7 @@
 	font-family: "微软雅黑";
 	font-size: 50px;
 	color: #edeff5;
+	font-weight: bold;
 	text-align: center;
 }
 .content-subtitle{
@@ -24,4 +25,20 @@
 	height: 64px;
 	background: rgba(255,255,255,0.2);
 	margin-top: 146px;
+	text-align: center;
+	color: #ffffff;
+}
+.api-count-logo{
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	line-height: 60px;
+	background: url(../../images/icons.png) -117px -7px;
+	margin-right: 20px;
+}
+.api-count-content{
+	display: inline-block;
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 64px;
 }

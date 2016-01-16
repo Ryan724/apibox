@@ -18,12 +18,14 @@
 }
 .indexheader .seach-nr {
 	width: 824px;
-	height: 36px;
+	height: 35px;
 	float: left;
-	line-height: 40px;
+	line-height: 35px;
 	color: #aeaeae;
 	border:1px solid #dddddd;
 	background: #fafafa;
+	font-weight: normal;
+	position: relative;
 }
 .indexheader .search {
 	display: inline-block;
@@ -32,6 +34,7 @@
 	float: left;
 	border-right: 1px solid #dddddd;
 	background: url(../../images/seach-logo.png) no-repeat;
+	cursor: pointer;
 }
 .indexheader .new-button {
 	display: inline-block;
@@ -48,4 +51,33 @@
 	content: " ";
 	display: block;
 	clear: both;
+}
+.seachlist-nr{
+	position: absolute;
+	width: 879px;
+	max-height: 400px;
+	overflow-y: auto;  
+	top: 39px;
+	padding: 0;
+	background:rgba(240,238,238,0.9);
+}
+.seachlist{
+	margin: 0;
+	padding: 5px 0;
+	padding-left: 40px;
+	cursor: pointer;
+}
+.seachlist:hover{
+	background: rgba(240,238,238,1);
+}
+.seachlist div{
+	line-height: 20px;
+	font-family: "Arial";
+	font-size: 12px;
+}
+.seachlist-nr-title{
+	color: #333333;
+}
+.seachlist-nr-subtitle{
+	color: #999999;
 }
