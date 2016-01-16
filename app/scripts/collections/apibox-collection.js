@@ -9,7 +9,7 @@ define(['talent'], function(Talent) {
 			});
 			return deferred;
 		},
-		getProjects:function(){
+		getProjects: function() {
 			var deferred = new Talent.$.Deferred;
 			this.fetch({
 				"url": "api/project/queryall"
@@ -18,50 +18,50 @@ define(['talent'], function(Talent) {
 			});
 			return deferred;
 		},
-		addProject:function(options){
+		addProject: function(options) {
 			var deferred = new Talent.$.Deferred();
-            var model = new Talent.Model();
-            model.url = "/api/project/add";
-            model.save(options).done(function(resp) {
-                deferred.resolve(resp);
-            });
-            return deferred.promise();
+			var model = new Talent.Model();
+			model.url = "/api/project/add";
+			model.save(options).done(function(resp) {
+				deferred.resolve(resp);
+			});
+			return deferred.promise();
 		},
-		addApi:function(options){
+		addApi: function(options) {
 			var deferred = new Talent.$.Deferred();
-            var model = new Talent.Model();
-            model.url = "/api/interface/add";
-            model.save(options).done(function(resp) {
-                deferred.resolve(resp);
-            });
-            return deferred.promise();
+			var model = new Talent.Model();
+			model.url = "/api/interface/add";
+			model.save(options).done(function(resp) {
+				deferred.resolve(resp);
+			});
+			return deferred.promise();
 		},
-		getApi:function(options){
+		getApi: function(options) {
 			var deferred = new Talent.$.Deferred();
-            var model = new Talent.Model();
-            model.url = "/api/interface/get";
-            model.fetch(options).done(function(resp) {
-                deferred.resolve(resp);
-            });
-            return deferred.promise();
+			var model = new Talent.Model();
+			model.url = "/api/interface/get";
+			model.save(options).done(function(resp) {
+				deferred.resolve(resp);
+			});
+			return deferred.promise();
 		},
-		getRealServerData:function(options){
+		getRealServerData: function(options) {
 			var deferred = new Talent.$.Deferred();
-            var model = new Talent.Model();
-            model.url = "/api/mock/getserverdate";
-            model.fetch(options).done(function(resp) {
-                deferred.resolve(resp);
-            });
-            return deferred.promise();
-        },
-		getAllData:function(options){
+			var model = new Talent.Model(options);
+			model.url = "/api/mock/getserverdate";
+			model.save().done(function(resp) {
+				deferred.resolve(resp);
+			});
+			return deferred.promise();
+		},
+		getAllData: function(options) {
 			var deferred = new Talent.$.Deferred();
-            var model = new Talent.Model();
-            model.url = "/api/project/queryalldata";
-            model.fetch(options).done(function(resp) {
-                deferred.resolve(resp);
-            });
-            return deferred.promise();
+			var model = new Talent.Model();
+			model.url = "/api/project/queryalldata";
+			model.save(options).done(function(resp) {
+				deferred.resolve(resp);
+			});
+			return deferred.promise();
 		}
 		,updateData:function(options){
 			var deferred = new Talent.$.Deferred();
