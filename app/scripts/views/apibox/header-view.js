@@ -36,8 +36,9 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			this.$("input[class=seach-nr]").val("").attr("data-id","").attr("data-project","");
 			this.$(".pro").attr({"data-id":"","data-project":""}).text("").removeClass("projectName");;
 			this.$("input[class=seach-nr]").val("");
-			this.$(".seach-nr").width(825);
-			this.$("ul.seachlist-nr").width(825);
+			this.$("div.seach-nr").width(824);
+			this.$("input.seach-nr").width(814);
+			this.$("ul.seachlist-nr").width(824);
 			this.$(".seachlist-nr").empty();
 		}
 		,toSeach:function(){//点击搜索
@@ -57,8 +58,9 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			if(projectId==""){
 				this.$(".pro").attr("data-id",thisId).attr("data-project",projectId).text($(target).find(".seachlist-nr-title").attr("name")).addClass("projectName");
 				this.$("input[class=seach-nr]").val("");
-				this.$(".seach-nr").width(808-$(".pro").width());
-				this.$("ul.seachlist-nr").width(818-$(".pro").width());
+				this.$("div.seach-nr").width(807-$(".pro").width());
+				this.$("input.seach-nr").width(797-$(".pro").width());
+				this.$("ul.seachlist-nr").width(807-$(".pro").width());
 			}else{
 				this.$("input[class=seach-nr]").attr("data-id",thisId).attr("data-project",projectId).val($(target).find(".seachlist-nr-title").attr("name"));
 			}
