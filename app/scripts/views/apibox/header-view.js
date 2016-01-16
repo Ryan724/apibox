@@ -62,14 +62,22 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 				$(".pro").text($(target).find(".seachlist-nr-title").text());
 				$(".pro").addClass("project");
 				$("input[class=seach-nr]").val("");
-				$(".seach-nr").width(816-$(".pro").width()-9);
-				$("ul.seachlist-nr").width(826-$(".pro").width()-9);
+				$(".seach-nr").width(816-$(".pro").width()-8);
+				$("ul.seachlist-nr").width(826-$(".pro").width()-8);
 			}else{
 				$("input[class=seach-nr]").attr("data-id",thisId);
 				$("input[class=seach-nr]").attr("data-project",projectId);
 				$("input[class=seach-nr]").val($(target).find(".seachlist-nr-title").text());
 			}
-				
+			$(".pro").click(function(){
+				$(".pro").attr("data-id","");
+				$(".pro").attr("data-project","");
+				$(".pro").text("");
+				$("input[class=seach-nr]").val("");
+				$(".seach-nr").width(825);
+				$("ul.seachlist-nr").width(825);
+				$(".pro").removeClass("project");
+			});
 			$(".seachlist-nr").empty();
 		}
 		,seachClick:function(e){//输入内容
