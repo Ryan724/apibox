@@ -47,8 +47,16 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			event.stopPropagation();
 			var data = {};
 			data.id = $("input[class=seach-nr]").attr("data-id");
-			data.project = $("input[class=seach-nr]").attr("data-project");
+			data.pid = $("input[class=seach-nr]").attr("data-project");
 			this.resetInput();
+			$(".pro").attr("data-id","");
+			$(".pro").attr("data-project","");
+			$(".pro").text("");
+			$("input[class=seach-nr]").val("");
+			$(".seach-nr").width(825);
+			$("ul.seachlist-nr").width(825);
+			$(".pro").removeClass("projectName");
+			this.trigger("seach:apicontent",data);
 			//跳转
 
 		}
@@ -60,7 +68,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 				$(".pro").attr("data-id",thisId);
 				$(".pro").attr("data-project",projectId);
 				$(".pro").text($(target).find(".seachlist-nr-title").text());
-				$(".pro").addClass("project");
+				$(".pro").addClass("projectName");
 				$("input[class=seach-nr]").val("");
 				$(".seach-nr").width(816-$(".pro").width()-8);
 				$("ul.seachlist-nr").width(826-$(".pro").width()-8);
@@ -76,7 +84,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 				$("input[class=seach-nr]").val("");
 				$(".seach-nr").width(825);
 				$("ul.seachlist-nr").width(825);
-				$(".pro").removeClass("project");
+				$(".pro").removeClass("projectName");
 			});
 			$(".seachlist-nr").empty();
 		}
@@ -85,7 +93,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			var allData = this.Data
 			var apiList = "";
 			var inputIndex = $("input[class=seach-nr]").val();
-			if($(".project").length==0){
+			if($(".projectName").length==0){
 				if(inputIndex!=""){
 					if(inputIndex.indexOf("@")!=-1){
 						inputIndex = inputIndex.substring(inputIndex.indexOf("@")+1);
@@ -107,7 +115,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			}else{
 				_.each(allData,function(list){
 					_.each(list.apis,function(listChild){
-						if(listChild.name.indexOf(inputIndex)==0&&listChild.project==$(".project").attr("data-id")){
+						if(listChild.name.indexOf(inputIndex)==0&&listChild.project==$(".projectName").attr("data-id")){
 							apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title'>"+listChild.name+"            ---"+listChild.projectName+"</div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>"
 						}
 					});

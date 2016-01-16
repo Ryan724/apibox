@@ -88,7 +88,7 @@ input.seach-nr{
 .seachlist-nr-subtitle{
 	color: #999999;
 }
-.project{
+.projectName{
 	display: inline-block;
 	float: left;
 	height: 38px;
@@ -98,6 +98,7 @@ input.seach-nr{
 	padding: 0 8px;
 	font-size: 14px;
 	color: #aeaeae;
+	cursor: pointer;
 }
 .bordernone{
 	border: none;

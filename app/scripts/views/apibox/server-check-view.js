@@ -35,7 +35,7 @@ define(['talent',
 							self.$(".server-data").html("<pre>"+serverData+"</pre>")
 						}
 					}else{
-						serverData = "          请求接口失败，请直接拷贝正式场景的返回数据做对比"
+						serverData = " 请求接口失败，请直接拷贝正式场景的返回数据做对比"
 					}
 					self.$(".server-data").html("<pre>"+serverData+"</pre>")
 				});
