@@ -18,9 +18,7 @@ define(['talent',
 				events["click .server-check-btn"] = this.serverCheckShow;
 				return events;
 			},
-			initialize: function() {
-				debugger;
-			},
+			initialize: function() {},
 			onShow:function(){
 				// this.serverCheckShow();
 			},
@@ -33,7 +31,7 @@ define(['talent',
 			},
 			serverCheckShow:function(e){
 				this.$(".data-layer").show();
-				this.serverCheckView = new ServerCheckView({model:new Talent.Model({"data":'{"a":1,"b":{"d":2}}'})});
+				this.serverCheckView = new ServerCheckView({model:new Talent.Model({"data":self.model.get("response")})});
 				this.dataLayerRegion.show(this.serverCheckView)
 				this.listenTo(this.serverCheckView,"cancle:diff",this.closeDataRegionClose);
 			},
