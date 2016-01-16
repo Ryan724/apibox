@@ -38,6 +38,27 @@ define(['talent',
 		},
 		createApi: function(e) {
 			var self = this;
+			var flag=true;
+			var url=this.$(".api-url").val();
+			var m = url.match(/(http[^"]*)"/g);
+			if(m){}
+			var method=this.$(".method").val();
+			var request=this.$(".api-req").val();
+			var response=this.$(".api-rsp").val();
+			try{
+				JSON.parse(request);
+				this.$(".api-req").removeClass("border-red");flag=true;
+			}catch(erro){
+				this.$(".api-req").addClass("border-red");flag=false;
+			};
+			try{
+				JSON.parse(response);
+				this.$(".api-rsp").removeClass("border-red");flag=true;
+			}catch(erro){
+				this.$(".api-rsp").addClass("border-red");flag=false;
+			}
+			if(url==""){this.$(".api-url").addClass("border-red");flag=false};
+			if(method==""){this.$(".method").addClass("border-red");flag=false};
 			var config = {
 				"name": this.$(".api-name").val(),
 				"desc": this.$(".api-desc").val(),
@@ -51,12 +72,14 @@ define(['talent',
 				"request": this.$(".api-req").val(),
 				"response": this.$(".api-rsp").val()
 			}
-			Talent.app.request("apibox:addApi",api).done(function(resp) {
+			if(flag){
+				Talent.app.request("apibox:addApi",api).done(function(resp) {
 				console.log(resp)
 				if(resp.flag){
 					self.showInterface(resp.message);
 				}
 			});
+			}
 		},
 		getInterfaceData:function(pid,id){
 			Talent.app.request("apibox:getApi",{pid:pid,id:id}).done(function(resp) {
@@ -73,11 +96,28 @@ define(['talent',
 		},
 		showNextStep: function(e) {
 			//校验值
-			this.model.set("isNext", true);
-			this.$(".next-page").show();
-			this.$(".next-page").removeClass("next-page").addClass("pre-page");
-			this.$(".c-step1").hide();
-			this.$(".c-step2").show();
+			var flag=true;
+			var interfaceName=$(".api-name").val();
+			var productName=$(".project").val();
+			var discribe=$(".api-desc").val();
+		     if(interfaceName==""){
+		     	$(".api-name").addClass("border-red");
+		     	flag=false;
+		     };
+		     if (productName=="") {
+		     	$(".project").addClass("border-red");
+		     	flag=false;
+		     };
+		     //  if (discribe=="") {
+		     // 	$(".api-desc").val("数据为空");
+		     // };
+		     if (flag) {
+			    this.model.set("isNext", true);
+				this.$(".next-page").show();
+				this.$(".next-page").removeClass("next-page").addClass("pre-page");
+				this.$(".c-step1").hide();
+				this.$(".c-step2").show();
+		     };
 		},
 		showPreStep: function() {
 			this.$(".c-step2").hide();

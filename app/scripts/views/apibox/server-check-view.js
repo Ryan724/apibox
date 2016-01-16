@@ -21,7 +21,7 @@ define(['talent',
 				this.model.set("data",data);
 			},
 			onShow: function() {
-				var serverData = _.formatJson('{"a": 11, "b": {"d": 12 } }'); 
+				var serverData = _.formatJson(this.model.get("data")); 
 				this.$(".server-data").html("<pre>"+serverData+"</pre>")
 			},
 			diffDataDeal:function(){
