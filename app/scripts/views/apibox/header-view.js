@@ -62,8 +62,8 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 				$(".pro").text($(target).find(".seachlist-nr-title").text());
 				$(".pro").addClass("project");
 				$("input[class=seach-nr]").val("");
-				$(".seach-nr").width(816-$(".pro").width());
-				$("ul.seachlist-nr").width(826-$(".pro").width());
+				$(".seach-nr").width(816-$(".pro").width()-9);
+				$("ul.seachlist-nr").width(826-$(".pro").width()-9);
 			}else{
 				$("input[class=seach-nr]").attr("data-id",thisId);
 				$("input[class=seach-nr]").attr("data-project",projectId);
