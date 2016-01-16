@@ -40,7 +40,7 @@ define(['talent'], function(Talent) {
 			var deferred = new Talent.$.Deferred();
 			var model = new Talent.Model();
 			model.url = "/api/interface/get";
-			model.fetch(options).done(function(resp) {
+			model.save(options).done(function(resp) {
 				deferred.resolve(resp);
 			});
 			return deferred.promise();
@@ -58,7 +58,7 @@ define(['talent'], function(Talent) {
 			var deferred = new Talent.$.Deferred();
 			var model = new Talent.Model();
 			model.url = "/api/project/queryalldata";
-			model.fetch(options).done(function(resp) {
+			model.save(options).done(function(resp) {
 				deferred.resolve(resp);
 			});
 			return deferred.promise();
