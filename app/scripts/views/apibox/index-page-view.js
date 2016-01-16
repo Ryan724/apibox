@@ -56,7 +56,7 @@ define(['talent',
 			});
 			this.contentView = new Content({
 				model:new Talent.Model()
-			});
+			}); 
 			this.addInterfaceView = new AddInterface();
 			this.listenTo(this.headerView, "add:interface", function() {
 				self.icontent.show(self.addInterfaceView);
