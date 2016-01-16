@@ -21,9 +21,7 @@ define(['talent',
 				return events;
 			},
 			initialize: function() {},
-			onShow:function(){
-				// this.serverCheckShow();
-			},
+			onShow:function(){},
 			dataMockShow:function(e){
 				var self=this;
 				var data=_.formatJson(self.model.get("request"));
