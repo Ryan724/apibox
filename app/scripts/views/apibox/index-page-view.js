@@ -50,7 +50,7 @@ define(['talent',
 			});
 			this.listenTo(this.addInterfaceView, "add:content", function() {
 				var countString = self.newCount();
-				// this.contentView.
+				this.contentView.model.set("count",countString);
 				self.icontent.show(self.contentView);
 
 			});
