@@ -65,7 +65,7 @@ input.seach-nr{
 	overflow-y: auto;  
 	top: 39px;
 	padding: 0;
-	background:rgba(240,238,238,0.9);
+	background:rgba(240,238,238,1);
 }
 
 .seachlist{
@@ -75,7 +75,7 @@ input.seach-nr{
 	cursor: pointer;
 }
 .seachlist:hover{
-	background: rgba(240,238,238,1);
+	background: #e6e6e6;
 }
 .seachlist div{
 	line-height: 20px;
@@ -84,6 +84,13 @@ input.seach-nr{
 }
 .seachlist-nr-title{
 	color: #333333;
+}
+.proNamert{
+	float: right;
+	font-weight: bold;
+	font-size: 17px;
+	line-height: 40px;
+	margin-right: 45px;
 }
 .seachlist-nr-subtitle{
 	color: #999999;
