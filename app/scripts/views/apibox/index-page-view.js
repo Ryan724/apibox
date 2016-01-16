@@ -8,7 +8,7 @@ define(['talent',
 	Header,
 	AddInterface,
 	Content) {
-	var datalist = [{
+	var datalist = [{ 
 		"desc": "这是一个轻便的接口管理器\n",
 		"name": "apibox项目",
 		"createTime": 1452768745220,
