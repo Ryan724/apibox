@@ -1,48 +1,39 @@
 define(['talent','templates/apibox'], function(Talent, jst) {
-	/**
-	* Header view class
-	* @author nobody
-	* @extends {Talent.CompositeView}
-	* @class HeaderView
-	*/
-	return Talent.CompositeView.extend(
-		/** @lends HeaderView.prototype */
-	{
+	return Talent.ItemView.extend({
 		template: jst['apibox/header']
 		,initialize: function() {
 			var self = this;
+			//--------------------请求数据（全部接口）--------------------------------
 			Talent.app.request("apibox:getAllData").done(function(resp) {
-				self.Data = resp.message== "" ? "" : JSON.parse(resp.message);
+				self.Data = jQuery.parseJSON(resp.message);
+				self.trigger("change:count",self.Data);
 			});
-		},
-		ui:{
-			"seach":'input[class=seach-nr]'
-			,"listChildClick":"ul[class=seachlist-nr]"
-			,"search":".search"
-			,"newAPI":"input[class=new-button]"
-			,"goIndex":".logo"
 		},
 		events:function(){
 			var events = {};
-			events['keyup '+this.ui.seach] = "seachClick";
-			events['click '+this.ui.listChildClick] = "listClick";
-			events['click '+this.ui.search] = "toSeach";
-			events['click '+this.ui.newAPI] = "newAPI";
-			events['click '+this.ui.goIndex] = "goIndexPage";
+			events['keyup input[class=seach-nr]'] = "seachClick";//搜索框输入
+			events['click ul[class=seachlist-nr]'] = "listClick";//点击内容
+			events['click .search'] = "toSeach";			     //点击搜索
+			events['click input[class=new-button]'] = "newAPI";  //点击新建
+			events['click .logo'] = "goIndexPage";               //点击logo返回主菜单
 			return events;
 		}
-		,goIndexPage:function(){
-			$(".seachlist-nr").empty().append(apiList);
+		,goIndexPage:function(){//返回主菜单
+			this.resetInput();
 			this.trigger("go:indexPage");
 		}
 		,newAPI:function(){//点击新建
 			this.resetInput();
 			this.trigger("add:interface");
 		}
-		,resetInput:function(){
-			$("input[class=seach-nr]").val("");
-			$("input[class=seach-nr]").attr("data-id","");
-			$("input[class=seach-nr]").attr("data-project","");
+		,resetInput:function(){//重置输入框
+			this.$("input[class=seach-nr]").val("").attr("data-id","").attr("data-project","");
+			this.$(".pro").attr({"data-id":"","data-project":""}).text("").removeClass("projectName");;
+			this.$("input[class=seach-nr]").val("");
+			this.$("div.seach-nr").width(824);
+			this.$("input.seach-nr").width(814);
+			this.$("ul.seachlist-nr").width(824);
+			this.$(".seachlist-nr").empty();
 		}
 		,toSeach:function(){//点击搜索
 			event.stopPropagation();
@@ -50,43 +41,25 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			data.id = $("input[class=seach-nr]").attr("data-id");
 			data.pid = $("input[class=seach-nr]").attr("data-project");
 			this.resetInput();
-			$(".pro").attr("data-id","");
-			$(".pro").attr("data-project","");
-			$(".pro").text("");
-			$("input[class=seach-nr]").val("");
-			$(".seach-nr").width(825);
-			$("ul.seachlist-nr").width(825);
-			$(".pro").removeClass("projectName");
-			$(".seachlist-nr").empty();
-			this.trigger("seach:apicontent",data);
-			//跳转
-
+			console.log(data);
+			this.trigger("seach:apicontent",data); //跳转
 		}
 		,listClick:function(e){//点击内容
+			var self = this;
 			var target = $(e.target).get(0).tagName.toLocaleLowerCase()=="li"?$(e.target):$(e.target).parent();
 			var thisId = $(target).attr("data-id");
 			var projectId = $(target).attr("data-project");
-			if(projectId==""){
-				$(".pro").attr("data-id",thisId);
-				$(".pro").attr("data-project",projectId);
-				$(".pro").text($(target).find(".seachlist-nr-title").attr("name"));
-				$(".pro").addClass("projectName");
-				$("input[class=seach-nr]").val("");
-				$(".seach-nr").width(816-$(".pro").width()-8);
-				$("ul.seachlist-nr").width(826-$(".pro").width()-8);
+			if(projectId==""){// ""为项目名称
+				this.$(".pro").attr("data-id",thisId).attr("data-project",projectId).text($(target).find(".seachlist-nr-title").attr("name")).addClass("projectName");
+				this.$("input[class=seach-nr]").val("");
+				this.$("div.seach-nr").width(807-$(".pro").width());
+				this.$("input.seach-nr").width(797-$(".pro").width());
+				this.$("ul.seachlist-nr").width(807-$(".pro").width());
 			}else{
-				$("input[class=seach-nr]").attr("data-id",thisId);
-				$("input[class=seach-nr]").attr("data-project",projectId);
-				$("input[class=seach-nr]").val($(target).find(".seachlist-nr-title").attr("name"));
+				this.$("input[class=seach-nr]").attr("data-id",thisId).attr("data-project",projectId).val($(target).find(".seachlist-nr-title").attr("name"));
 			}
 			$(".pro").click(function(){
-				$(".pro").attr("data-id","");
-				$(".pro").attr("data-project","");
-				$(".pro").text("");
-				$("input[class=seach-nr]").val("");
-				$(".seach-nr").width(825);
-				$("ul.seachlist-nr").width(825);
-				$(".pro").removeClass("projectName");
+				self.resetInput();
 			});
 			$(".seachlist-nr").empty();
 		}
@@ -95,16 +68,17 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			var allData = this.Data
 			var apiList = "";
 			var inputIndex = $("input[class=seach-nr]").val();
-			if($(".projectName").length==0){
-				if(inputIndex!=""){
-					if(inputIndex.indexOf("@")!=-1){
+			if($(".projectName").length==0){//是否指定项目
+				if(inputIndex!=""){//是否有接口名称
+					if(inputIndex.indexOf("@")!=-1){//检索项目
 						inputIndex = inputIndex.substring(inputIndex.indexOf("@")+1);
-						_.each(allData,function(list){
-							if(list.name.indexOf(inputIndex)==0){
-								apiList+="<li class='seachlist' data-id='"+list.id+"' data-project=''><div class='seachlist-nr-title' name='"+list.name+"'>"+list.name+"</div><div class='seachlist-nr-subtitle'>"+ list.desc +"</div></li>"
-							}
+						var filtData = _.filter(allData,function(list){
+							return list.name.indexOf(inputIndex)==0;
 						});
-					}else{
+						_.each(filtData,function(list){
+							apiList+="<li class='seachlist' data-id='"+list.id+"' data-project=''><div class='seachlist-nr-title' name='"+list.name+"'>"+list.name+"</div><div class='seachlist-nr-subtitle'>"+ list.desc +"</div></li>";
+						});
+					}else{//未指定项目 检索接口
 						_.each(allData,function(list){
 							_.each(list.apis,function(listChild){
 								if(listChild.name.indexOf(inputIndex)==0){
@@ -114,22 +88,21 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 						});
 					}
 				}
-			}else{
-				_.each(allData,function(list){
-					_.each(list.apis,function(listChild){
-						if(listChild.name.indexOf(inputIndex)==0&&listChild.project==$(".projectName").attr("data-id")){
-							apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title' name='"+listChild.name+"'>"+listChild.name+"<span class='proNamert'>"+listChild.projectName+"</span></div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>"
-						}
-					});
+			}else{//指定项目 检索接口
+				var pointProjectId = $(".projectName").attr("data-id");
+				var findData = _.find(allData,function(list){
+					return list.id==pointProjectId;
+				});
+				var filtData = _.filter(findData.apis,function(list){
+					return	list.name.indexOf(inputIndex)==0;
+				});
+				_.each(filtData,function(listChild){
+					apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title' name='"+listChild.name+"'>"+listChild.name+"<span class='proNamert'>"+listChild.projectName+"</span></div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>";
 				});
 			}
-			
 			$(".seachlist-nr").empty().append(apiList);
-
 		}
-		,onRender: function() {
-		
-		}
+		,onRender: function() {}
 	});
 
 });

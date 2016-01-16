@@ -17,8 +17,11 @@
 	float: left;
 	background: url(../../images/api_logo.png) no-repeat 0px 9px;
 }
-.indexheader .seach-nr {
+.indexheader div.seach-nr{
 	width: 824px;
+}
+.indexheader .seach-nr {
+	width: 814px;
 	height: 35px;
 	float: left;
 	line-height: 35px;
