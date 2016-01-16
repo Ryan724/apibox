@@ -49,11 +49,3 @@
 	display: block;
 	clear: both;
 }
-
-/*content-----css*/
-.content{
-	min-width: 1130px;
-	width: 100%;
-	height: 498px;
-	background: url(../../images/head_img.png) center;
-}

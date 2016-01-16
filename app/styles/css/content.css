@@ -1,0 +1,27 @@
+/* content---------css*/
+.content{
+	min-width: 1130px;
+	width: 100%;
+	height: 346px;
+	padding-top: 152px;
+	background: url(../../images/head_img.png) center;
+}
+.content-title{
+	font-family: "微软雅黑";
+	font-size: 50px;
+	color: #edeff5;
+	text-align: center;
+}
+.content-subtitle{
+	font-family: "宋体";
+	font-size: 34px;
+	color: #edeff5;
+	text-align: center;
+	margin-top: 30px;
+}
+.api-count{
+	width: 100%;
+	height: 64px;
+	background: rgba(255,255,255,0.2);
+	margin-top: 146px;
+}
