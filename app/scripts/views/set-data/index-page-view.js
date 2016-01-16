@@ -27,6 +27,7 @@ define(['talent'
 			events['keyup .edit-input'] = 'editData';
 			events['keyup .input-key'] = 'thinkData';
 			events['click .select-datalist li'] = 'toggelData';
+			// events['click .key-box'] = 'nextEdit';
 			return events;
 		}
 		,editDataKey:function(e){
@@ -46,6 +47,10 @@ define(['talent'
 		,toggleEditStatus:function(e){
 			$(e.target).hide();
 			$(e.target).siblings(".data-key").text($(e.target).val());
+		}
+		,nextEdit:function(e){
+			var cloneNode=$(e.target).clone(true);
+			cloneNode.children(".data-key").text("");
 		}
 		,thinkData:function(e){
 			var self=this;

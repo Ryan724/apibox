@@ -1,11 +1,11 @@
 define(['talent',
-	'templates/apibox', 
+	'templates/apibox',
 	'views/common/page-regions/header-view',
 	'views/apibox/add-interface-view'
-  ], function(Talent,
-   	jst, 
-   	Header,
-   	AddInterface) {
+], function(Talent,
+	jst,
+	Header,
+	AddInterface) {
 	var datalist = [{
 		"desc": "这是一个轻便的接口管理器\n",
 		"name": "apibox项目",
