@@ -21,13 +21,25 @@ define(['talent',
 				this.model.set("data",data);
 			},
 			onShow: function() {
+				var self = this;
 				var pid=this.model.get("config")["project"];
 				var id=this.model.get("config")["id"];
-				// Talent.app.request("apibox:getRealServerData",{pid:pid,id:id}).done(function(resp) {
-				// 	console.log(resp);
-				// });
-				var serverData = _.formatJson(this.model.get("data")); 
-				this.$(".server-data").html("<pre>"+serverData+"</pre>")
+				Talent.app.request("apibox:getRealServerData",{"pid":pid,"id":id}).done(function(resp) {
+					var serverData = "";
+					if(resp.status==200){
+						try{
+							JSON.parse(resp.data);
+							serverData = _.formatJson(resp.data); 
+						}catch(err){
+							serverData = resp.Data;
+							self.$(".server-data").html("<pre>"+serverData+"</pre>")
+						}
+					}else{
+						serverData = "          请求接口失败，请直接拷贝正式场景的返回数据做对比"
+					}
+					self.$(".server-data").html("<pre>"+serverData+"</pre>")
+				});
+
 			},
 			diffDataDeal:function(){
 				var serverData = this.$(".server-data>pre").html();
