@@ -2,10 +2,11 @@
 	<div class="box-header">我是header</div>
 	<div class="box-content">
 		<div class="create-api">
-			<div class="c-step">
+			<span class="next-page">箭头》</span>
+			<div class="c-step c-step1">
 				<div>
 					<span>接口名称</span>
-					<input type="text" placeholder="请输入接口名称"/>
+					<input type="text" class="api-name" placeholder="请输入接口名称"/>
 				</div>
 				<div>
 					<span>项目</span>
@@ -15,12 +16,43 @@
 				</div>
 				<div>
 					<span style="float: left; margin:10px 5px 0 0;">接口描述</span>
-					<textarea  placeholder="请输入接口描述"></textarea>
+					<textarea   class="api-desc" placeholder="请输入接口描述"></textarea>
 				</div>
 				<div>
 					<div class="btns">
-						<span class="btn btn-blue">下一步</span>
-						<span class="btn btn-grey">取消</span>
+						<span class="btn btn-blue next-btn">下一步</span>
+						<span class="btn btn-grey cancle-btn">取消</span>
+					</div>
+				</div>
+			</div>
+			<div class="c-step c-step2">
+				<div>
+					<span>接口路径</span>
+					<input type="text"    class="api-url" placeholder="请输入接口路径"/>
+				</div>
+				<div>
+					<span>请求方式</span>
+					<input type="text" class="method" placeholder="请选择请求方式"  readonly="readonly"/>
+					<span class="icons-down"></span>
+					<ul class="methods">
+						<li class="method-li" id="POST">POST<li>
+						<li class="method-li" id="GET">GET<li>
+						<li class="method-li" id="DELETE">DELETE<li>
+						<li class="method-li" id="PUT">PUT<li>
+					</ul>
+				</div>
+				<div>
+					<span style="float: left; margin:10px 5px 0 0;">请求数据</span>
+					<textarea  placeholder="请输入接口描述"   class="api-req" ></textarea>
+				</div>
+				<div>
+					<span style="float: left; margin:10px 5px 0 0;">响应数据</span>
+					<textarea  placeholder="请输入接口描述"   class="api-rsp" ></textarea>
+				</div>
+				<div>
+					<div class="btns">
+						<span class="btn btn-blue submit-btn">提交</span>
+						<span class="btn btn-grey cancle-btn">取消</span>
 					</div>
 				</div>
 			</div>
