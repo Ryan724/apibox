@@ -23,6 +23,7 @@ define(['talent',
 		},
 		initialize: function() {
 			var self = this;
+
 		},
 		onRender: function() {
 			var self = this;
@@ -30,15 +31,11 @@ define(['talent',
 				model: new Talent.Model()
 			});
 			this.contentView = new Content({
-				model:new Talent.Model({
-					count:0
-				})
+				model: new Talent.Model()
 			});
 			this.apiContentView = new InterFacePage({
 				model:new Talent.Model()
 			});
-
-
 			// this.contentView.model.set("count",this.newCount());
 
 			this.listenTo(this.headerView,"seach:apicontent",function(data){//搜索
@@ -51,9 +48,13 @@ define(['talent',
 			this.listenTo(this.headerView,"go:indexPage",function(){
 				self.icontent.show(self.contentView);
 			});
+			this.listenTo(this.headerView,"change:count",function(data){
+				self.contentView.model.set("count",self.newCount(data));
+			});
 			this.listenTo(this.addInterfaceView, "add:content", function() {
 				self.icontent.show(self.contentView);
 			});
+			
 		},
 		getInterfaceData:function(pid,id){
 			var self =this;
@@ -72,10 +73,10 @@ define(['talent',
 				this.listenTo(this.interfacePageView,"","xx")
 			}
 		},
-		newCount:function(){
+		newCount:function(data){
 			var self = this;
 			self.count = 0;
-			_.each(self.headerView.model.Data,function(list){
+			_.each(data,function(list){
 				self.count +=list.apis.length;
 			});
 			return self.count;

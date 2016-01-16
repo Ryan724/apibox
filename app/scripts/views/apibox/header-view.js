@@ -5,7 +5,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 	* @extends {Talent.CompositeView}
 	* @class HeaderView
 	*/
-	return Talent.CompositeView.extend(
+	return Talent.ItemView.extend(
 		/** @lends HeaderView.prototype */
 	{
 		template: jst['apibox/header']
@@ -13,6 +13,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			var self = this;
 			Talent.app.request("apibox:getAllData").done(function(resp) {
 				self.Data = jQuery.parseJSON(resp.message);
+				self.trigger("change:count",self.Data);
 			});
 		},
 		events:function(){
