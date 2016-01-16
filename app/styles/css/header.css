@@ -20,7 +20,7 @@
 	width: 824px;
 	height: 35px;
 	float: left;
-	line-height: 40px;
+	line-height: 35px;
 	color: #aeaeae;
 	border:1px solid #dddddd;
 	background: #fafafa;
@@ -55,6 +55,8 @@
 .seachlist-nr{
 	position: absolute;
 	width: 879px;
+	max-height: 400px;
+	overflow-y: auto;  
 	top: 39px;
 	padding: 0;
 	background:rgba(240,238,238,0.9);
