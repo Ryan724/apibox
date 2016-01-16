@@ -21,9 +21,6 @@ define(['talent',
 		},
 		initialize: function() {
 			var self = this;
-			Talent.app.request("apibox:getAllData").done(function(resp) {
-				console.log(resp)
-			});
 		},
 		onRender: function() {
 			var self = this;

@@ -10,6 +10,10 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 	{
 		template: jst['apibox/header']
 		,initialize: function() {
+			var self = this;
+			Talent.app.request("apibox:getAllData").done(function(resp) {
+				self.Data = jQuery.parseJSON(resp.message);
+			});
 		},
 		ui:{
 			"seach":'input[class=seach-nr]'
@@ -59,12 +63,15 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 		}
 		,seachClick:function(e){//输入内容
 			event.stopPropagation();
-			var allData = this.model.get("data");
+			var allData = this.Data
 			var apiList = "";
 			var inputIndex = $("input[class=seach-nr]").val();
-			if(e.keyCode==229){
-				_.each(allData,function(){
-
+			if(inputIndex.indexOf("@")!=-1){
+				inputIndex = inputIndex.substring(inputIndex.indexOf("@")+1);
+				_.each(allData,function(list){
+					if(list.name.indexOf(inputIndex)==0){
+						apiList+="<li class='seachlist' data-id='"+list.id+"' data-project=''><div class='seachlist-nr-title'>"+list.name+"</div><div class='seachlist-nr-subtitle'>"+ list.desc +"</div></li>"
+					}
 				});
 			}else{
 				_.each(allData,function(list){
