@@ -1,16 +1,9 @@
 define(['talent','templates/apibox'], function(Talent, jst) {
-	/**
-	* Header view class
-	* @author nobody
-	* @extends {Talent.CompositeView}
-	* @class HeaderView
-	*/
-	return Talent.ItemView.extend(
-		/** @lends HeaderView.prototype */
-	{
+	return Talent.ItemView.extend({
 		template: jst['apibox/header']
 		,initialize: function() {
 			var self = this;
+			//--------------------请求数据（全部接口）--------------------------------
 			Talent.app.request("apibox:getAllData").done(function(resp) {
 				self.Data = jQuery.parseJSON(resp.message);
 				self.trigger("change:count",self.Data);
@@ -18,14 +11,14 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 		},
 		events:function(){
 			var events = {};
-			events['keyup input[class=seach-nr]'] = "seachClick";
-			events['click ul[class=seachlist-nr]'] = "listClick";
-			events['click .search'] = "toSeach";
-			events['click input[class=new-button]'] = "newAPI";
-			events['click .logo'] = "goIndexPage";
+			events['keyup input[class=seach-nr]'] = "seachClick";//搜索框输入
+			events['click ul[class=seachlist-nr]'] = "listClick";//点击内容
+			events['click .search'] = "toSeach";			     //点击搜索
+			events['click input[class=new-button]'] = "newAPI";  //点击新建
+			events['click .logo'] = "goIndexPage";               //点击logo返回主菜单
 			return events;
 		}
-		,goIndexPage:function(){
+		,goIndexPage:function(){//返回主菜单
 			this.resetInput();
 			this.trigger("go:indexPage");
 		}
@@ -56,7 +49,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			var target = $(e.target).get(0).tagName.toLocaleLowerCase()=="li"?$(e.target):$(e.target).parent();
 			var thisId = $(target).attr("data-id");
 			var projectId = $(target).attr("data-project");
-			if(projectId==""){
+			if(projectId==""){// ""为项目名称
 				this.$(".pro").attr("data-id",thisId).attr("data-project",projectId).text($(target).find(".seachlist-nr-title").attr("name")).addClass("projectName");
 				this.$("input[class=seach-nr]").val("");
 				this.$("div.seach-nr").width(807-$(".pro").width());
@@ -75,9 +68,9 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			var allData = this.Data
 			var apiList = "";
 			var inputIndex = $("input[class=seach-nr]").val();
-			if($(".projectName").length==0){
-				if(inputIndex!=""){
-					if(inputIndex.indexOf("@")!=-1){
+			if($(".projectName").length==0){//是否指定项目
+				if(inputIndex!=""){//是否有接口名称
+					if(inputIndex.indexOf("@")!=-1){//检索项目
 						inputIndex = inputIndex.substring(inputIndex.indexOf("@")+1);
 						var filtData = _.filter(allData,function(list){
 							return list.name.indexOf(inputIndex)==0;
@@ -85,7 +78,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 						_.each(filtData,function(list){
 							apiList+="<li class='seachlist' data-id='"+list.id+"' data-project=''><div class='seachlist-nr-title' name='"+list.name+"'>"+list.name+"</div><div class='seachlist-nr-subtitle'>"+ list.desc +"</div></li>";
 						});
-					}else{
+					}else{//未指定项目 检索接口
 						_.each(allData,function(list){
 							_.each(list.apis,function(listChild){
 								if(listChild.name.indexOf(inputIndex)==0){
@@ -95,13 +88,16 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 						});
 					}
 				}
-			}else{
-				_.each(allData,function(list){
-					_.each(list.apis,function(listChild){
-						if(listChild.name.indexOf(inputIndex)==0&&listChild.project==$(".projectName").attr("data-id")){
-							apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title' name='"+listChild.name+"'>"+listChild.name+"<span class='proNamert'>"+listChild.projectName+"</span></div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>"
-						}
-					});
+			}else{//指定项目 检索接口
+				var pointProjectId = $(".projectName").attr("data-id")
+				var findData = _.find(allData,function(list){
+					return list.id==pointProjectId;
+				});
+				var filtData = _.filter(findData.apis,function(list){
+					return	list.name.indexOf(inputIndex)==0;
+				});
+				_.each(filtData,function(listChild){
+					apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title' name='"+listChild.name+"'>"+listChild.name+"<span class='proNamert'>"+listChild.projectName+"</span></div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>";
 				});
 			}
 			$(".seachlist-nr").empty().append(apiList);

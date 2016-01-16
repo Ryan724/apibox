@@ -27,21 +27,16 @@ define(['talent',
 		},
 		onRender: function() {
 			var self = this;
-			this.headerView = new Header({
-				model: new Talent.Model()
-			});
-			this.contentView = new Content({
-				model: new Talent.Model()
-			});
-			this.apiContentView = new InterFacePage({
-				model:new Talent.Model()
-			});
-			// this.contentView.model.set("count",this.newCount());
+			//--------------------------------实例化--------------------------------------
+			this.headerView = new Header();
+			this.contentView = new Content();
+			this.apiContentView = new InterFacePage();
+			this.addInterfaceView = new AddInterface();
+			//-------------------------------事件监听-------------------------------------
 
 			this.listenTo(this.headerView,"seach:apicontent",function(data){//搜索
 				self.getInterfaceData(data.pid,data.id)
 			});
-			this.addInterfaceView = new AddInterface();
 			this.listenTo(this.headerView, "add:interface", function() {
 				self.icontent.show(self.addInterfaceView);
 			});
