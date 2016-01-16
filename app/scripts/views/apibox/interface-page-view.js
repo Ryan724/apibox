@@ -26,8 +26,7 @@ define(['talent',
 			},
 			dataMockShow:function(e){
 				var self=this;
-				debugger;
-				var data=_.formatJson(self.model.get("response"));
+				var data=_.formatJson(self.model.get("request"));
 				this.$(".data-layer").show();
 				this.mockDataView = new MockDataView({model:new Talent.Model({"data":data})});
 				this.dataLayerRegion.show(this.mockDataView)
@@ -36,8 +35,12 @@ define(['talent',
 			serverCheckShow:function(e){
 				var self=this
 				var data=_.formatJson(self.model.get("response"));
+				var config=self.model.get("config");
 				this.$(".data-layer").show();
-				this.serverCheckView = new ServerCheckView({model:new Talent.Model({"data":data})});
+				this.serverCheckView = new ServerCheckView({model:new Talent.Model({
+					"data":data
+					,"config":config
+				})});
 				this.dataLayerRegion.show(this.serverCheckView)
 				this.listenTo(this.serverCheckView,"cancle:diff",this.closeDataRegionClose);
 			},
