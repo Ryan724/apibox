@@ -18,15 +18,15 @@ define(['talent',
 			},
 			onShow: function() {
 				$('body').click(function(e){
-                var node=$(e.target).attr("data-name");
-                var mockData=$(".mock-data pre").text();
+                var node=this.$(e.target).attr("data-name");
+                var mockData=this.$(".mock-data pre").text();
 	                if(!node){
 	                	try{
 	                		if(JSON.parse(mockData)){
-	                			$(".mock-data").removeClass("border-red");
+	                			this.$(".mock-data").removeClass("border-red");
 	                		};
 	                	}catch(erro){
-	                		$(".mock-data").addClass("border-red");
+	                		this.$(".mock-data").addClass("border-red");
 	                	}
                 	}
             	});

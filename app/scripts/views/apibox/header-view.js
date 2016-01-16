@@ -32,6 +32,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			return events;
 		}
 		,goIndexPage:function(){
+			$(".seachlist-nr").empty().append(apiList);
 			this.trigger("go:indexPage");
 		}
 		,newAPI:function(){//点击新建
@@ -56,6 +57,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			$(".seach-nr").width(825);
 			$("ul.seachlist-nr").width(825);
 			$(".pro").removeClass("projectName");
+			$(".seachlist-nr").empty();
 			this.trigger("seach:apicontent",data);
 			//跳转
 

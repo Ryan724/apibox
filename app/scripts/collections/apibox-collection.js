@@ -39,7 +39,7 @@ define(['talent'], function(Talent) {
 		getApi: function(options) {
 			var deferred = new Talent.$.Deferred();
 			var model = new Talent.Model();
-			model.url = "/api/interface/get";
+			model.url = "/api/interface/query";
 			model.save(options).done(function(resp) {
 				deferred.resolve(resp);
 			});
@@ -62,6 +62,15 @@ define(['talent'], function(Talent) {
 				deferred.resolve(resp);
 			});
 			return deferred.promise();
+		}
+		,updateData:function(options){
+			var deferred = new Talent.$.Deferred();
+            var model = new Talent.Model();
+            model.url = "/api/interface/update";
+            model.save(options).done(function(resp) {
+                deferred.resolve(resp);
+            });
+            return deferred.promise();
 		}
 	});
 });
