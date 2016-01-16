@@ -66,23 +66,25 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			var allData = this.Data
 			var apiList = "";
 			var inputIndex = $("input[class=seach-nr]").val();
-			if(inputIndex.indexOf("@")!=-1){
-				inputIndex = inputIndex.substring(inputIndex.indexOf("@")+1);
-				_.each(allData,function(list){
-					if(list.name.indexOf(inputIndex)==0){
-						apiList+="<li class='seachlist' data-id='"+list.id+"' data-project=''><div class='seachlist-nr-title'>"+list.name+"</div><div class='seachlist-nr-subtitle'>"+ list.desc +"</div></li>"
-					}
-				});
-			}else{
-				_.each(allData,function(list){
-					_.each(list.apis,function(listChild){
-						if(listChild.name.indexOf(inputIndex)==0){
-							apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title'>"+listChild.name+"            ---"+listChild.projectName+"</div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>"
+			console.log(inputIndex);
+			if(inputIndex!=""){
+				if(inputIndex.indexOf("@")!=-1){
+					inputIndex = inputIndex.substring(inputIndex.indexOf("@")+1);
+					_.each(allData,function(list){
+						if(list.name.indexOf(inputIndex)==0){
+							apiList+="<li class='seachlist' data-id='"+list.id+"' data-project=''><div class='seachlist-nr-title'>"+list.name+"</div><div class='seachlist-nr-subtitle'>"+ list.desc +"</div></li>"
 						}
 					});
-				});
+				}else{
+					_.each(allData,function(list){
+						_.each(list.apis,function(listChild){
+							if(listChild.name.indexOf(inputIndex)==0){
+								apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title'>"+listChild.name+"            ---"+listChild.projectName+"</div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>"
+							}
+						});
+					});
+				}
 			}
-			
 			$(".seachlist-nr").empty().append(apiList);
 
 		}
