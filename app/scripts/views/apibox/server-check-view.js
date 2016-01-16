@@ -21,7 +21,12 @@ define(['talent',
 				this.model.set("data",data);
 			},
 			onShow: function() {
-				var serverData = _.formatJson('{"a": 11, "b": {"d": 12 } }'); 
+				var pid=this.model.get("config")["project"];
+				var id=this.model.get("config")["id"];
+				// Talent.app.request("apibox:getRealServerData",{pid:pid,id:id}).done(function(resp) {
+				// 	console.log(resp);
+				// });
+				var serverData = _.formatJson(this.model.get("data")); 
 				this.$(".server-data").html("<pre>"+serverData+"</pre>")
 			},
 			diffDataDeal:function(){

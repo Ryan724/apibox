@@ -16,7 +16,21 @@ define(['talent',
 				var data =_.formatJson(this.model.get("data"));
 				this.model.set("data",data);
 			},
-			onShow: function() {},
+			onShow: function() {
+				$('body').click(function(e){
+                var node=$(e.target).attr("data-name");
+                var mockData=$(".mock-data pre").text();
+	                if(!node){
+	                	try{
+	                		if(JSON.parse(mockData)){
+	                			$(".mock-data").removeClass("border-red");
+	                		};
+	                	}catch(erro){
+	                		$(".mock-data").addClass("border-red");
+	                	}
+                	}
+            	});
+            },
 			createMockUrl:function(){
 				var mockData = this.$(".mock-data").html();
 			},

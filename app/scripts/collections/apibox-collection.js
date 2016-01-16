@@ -45,6 +45,15 @@ define(['talent'], function(Talent) {
             });
             return deferred.promise();
 		},
+		getRealServerData:function(options){
+			var deferred = new Talent.$.Deferred();
+            var model = new Talent.Model();
+            model.url = "/api/mock/getserverdate";
+            model.fetch(options).done(function(resp) {
+                deferred.resolve(resp);
+            });
+            return deferred.promise();
+        },
 		getAllData:function(options){
 			var deferred = new Talent.$.Deferred();
             var model = new Talent.Model();
