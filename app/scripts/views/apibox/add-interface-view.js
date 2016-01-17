@@ -98,6 +98,7 @@ define(['talent',
 		showNextStep: function(e) {
 			//校验值
 			var flag=true;
+			var self=this;
 			var interfaceName=$(".api-name").val();
 			var productName=$(".project").val();
 			var discribe=$(".api-desc").val();
@@ -109,20 +110,23 @@ define(['talent',
 		     	$(".project").addClass("border-red");
 		     	flag=false;
 		     };
-		     //  if (discribe=="") {
-		     // 	$(".api-desc").val("数据为空");
-		     // };
 		     if (flag) {
 			    this.model.set("isNext", true);
 				this.$(".next-page").show();
 				this.$(".next-page").removeClass("next-page").addClass("pre-page");
-				this.$(".c-step1").hide();
-				this.$(".c-step2").show();
+				this.$(".c-step1").animate({'left':'-100%'},function(){
+					self.$(".c-step1").hide();
+					self.$(".c-step2").show();
+					self.$(".c-step2").animate({'left':0})
+				});
 		     };
 		},
 		showPreStep: function() {
 			this.$(".c-step2").hide();
 			this.$(".c-step1").show();
+			this.$(".c-step1").animate({'left':0},function(){
+				self.$(".c-step2").animate({'left':'100%'});
+			});
 			this.$(".pre-page").removeClass("pre-page").addClass("next-page");
 			if (this.model.set("isNext")) this.$(".next-page").show();
 		},

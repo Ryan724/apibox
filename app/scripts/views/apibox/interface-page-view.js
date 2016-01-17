@@ -59,7 +59,6 @@ define(['talent',
 				var node=this.$(e.currentTarget);
 				var val=node.val();
 				node.hide();
-				// node.prev().text(val).show();
 				if (node.hasClass("api-req-deit")) {
 					self.model.set({"request":val});
 				}else if(node.hasClass("api-rsp-edit")){

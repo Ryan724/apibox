@@ -73,12 +73,15 @@
 	padding: 1px;
 	font-size: 18px;
 	position: relative;
+	/*-----------------------------------------jiayunqiu--------------------------------------*/
+	overflow: hidden;
 }
 .interface-api>ul,
 .c-step{
 	margin: 20px auto;
 	width:600px;
 	padding-top: 20px;
+	position: relative;
 }
 .interface-api>ul>li ,
 .c-step>div{
@@ -238,8 +241,12 @@
 	bottom: 10px;
 	right: 10px;
 }
+.c-step1{
+/*	left: 100%;*/
+}
 .c-step2{
 	display: none;
+	left: 100%;
 }
 .methods{
 	display: none;	
