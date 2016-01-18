@@ -73,7 +73,11 @@ define(['talent',
 					return  item == self[id]?true:false;
 				})
 			}else{
-				delete self[pid][key]
+				if(typeof self[id] == "object"){
+					delete self[pid][key]	
+				}else{
+					delete self[pid][self[id]]	
+				}
 			}
 			nodeParent.detach();
 		},
@@ -97,6 +101,7 @@ define(['talent',
 					this[obj.id] =[];
 					this[pid][obj.name]=this[obj.id];
 				}else{
+					obj.value = (obj.type ==3||obj.type ==5)? +obj.value:obj.type ==4?obj.value=="true":obj.value;
 					this[obj.id] = obj.value;
 					this[pid][obj.name]=this[obj.id];
 				}
@@ -109,6 +114,7 @@ define(['talent',
 					this[obj.id] =[];
 					finalValue= this[obj.id];		
 				}else{
+					obj.value = (obj.type ==3||obj.type ==5)? +obj.value:obj.type ==4?obj.value=="true":obj.value;
 					this[obj.id] = obj.value;
 					finalValue= obj.value;
 				}	
