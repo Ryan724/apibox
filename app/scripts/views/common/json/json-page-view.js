@@ -94,6 +94,10 @@ define(['talent',
 			}
 			if(ptype!=2){
 				if(!obj.name) return;
+				if(this[pid][obj.name]){
+					alert("属性名称重复");
+					return;
+				}
 				if(obj.type==1){
 					this[obj.id] ={};
 					this[pid][obj.name]=this[obj.id];	
@@ -123,6 +127,7 @@ define(['talent',
 			obj.typeName = this.typeArr[+obj.type];
 			node.parent().siblings(".glyphicon-plus").before(this.mapTpl(obj))
 			this.cacelInput(e);
+			// console.log(1,this.root)
 		},
 		appendInput:function(e){
 			var node = $(e.currentTarget);
