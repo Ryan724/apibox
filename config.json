@@ -8,6 +8,6 @@
 		"port": 2016,
 		"localhost":"127.0.0.1"
 	},
-	"env":"dev1"
+	"env":"dev"
 
 }
