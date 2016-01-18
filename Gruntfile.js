@@ -1,22 +1,18 @@
-module.exports = function( grunt ) {//node下的运行的js，s
+module.exports = function( grunt ) {
 	'use strict';
+
 	var config = {
 		pkg: grunt.file.readJSON('package.json')
 		,banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd H:MM") %> */'
 		,watch: {
 			options: {
-				livereload: true
+				livereload: false
 			}
 			,jst: {
 				files: [
 					'app/templates/**/*.html'
 				]
 				,tasks: 'jst'
-			}
-			,css:{
-				files: [
-					'app/styles/css/*.css'
-				]
 			}
 		}
 		,requirejs: {
@@ -40,6 +36,11 @@ module.exports = function( grunt ) {//node下的运行的js，s
 				,'helpers/index', 'network/index'
 				,"views/common/layouts/master-layout"
 				,"views/common/layouts/empty-layout"
+				,"views/common/page-regions/content-view"
+				,"views/common/page-regions/footer-view"
+				,"views/common/page-regions/header-view"
+				,"views/common/page-regions/sidebar-view"
+				,"views/common/json/json-page-view"
 			]
 			,main: {
 				options: {
@@ -88,6 +89,7 @@ module.exports = function( grunt ) {//node下的运行的js，s
 		}
 		,cssmin: {
 			options: {
+				// report: 'gzip',
 				banner: '<%= banner %>'
 			},
 			compress: {
@@ -96,7 +98,16 @@ module.exports = function( grunt ) {//node下的运行的js，s
 				}
 			}
 		}
-		// ,connect: {server: {options: {hostname: 'localhost',base: 'app',open: 'http://localhost:8000'} } }
+		,connect: {
+			server: {
+				options: {
+					hostname: 'localhost'
+					// ,port: 8000
+					,base: 'app'
+					,open: 'http://localhost:8000'
+				}
+			}
+		}
 		,concurrent: {
 			jst: ['jst:common']
 			,rjs: ['requirejs:mainIncludeFiles']	// fix: rjs copy conflict
@@ -112,19 +123,16 @@ module.exports = function( grunt ) {//node下的运行的js，s
 	for(var i=0; i<channels.length; i++){
 		var channel = channels[i];
 		var channelName = channel.slice(channel.lastIndexOf('/')+1);
-		config.jst[channelName] = {
-			src: ["app/templates/"+channelName+"/**/*.html"],
-			dest: "app/scripts/templates/"+channelName+".js"
-		};
-
-		config.concurrent.jst.push('jst:'+channelName);
-
 		if(!grunt.file.isDir(channel) 
 			|| (blackList.indexOf(channelName) > -1)
 			|| !grunt.file.isFile(channel, 'index-page-view.js')
 		){
 			continue;
 		}
+		config.jst[channelName] = {
+			src: ["app/templates/"+channelName+"/**/*.html"],
+			dest: "app/scripts/templates/"+channelName+".js"
+		};
 		config.requirejs[channelName] = {
 			options: {
 				modules: [
@@ -140,33 +148,18 @@ module.exports = function( grunt ) {//node下的运行的js，s
 			dest: "release/app/scripts/views/"+channelName+"/index-page-view.min.js"
 		};
 
+		config.concurrent.jst.push('jst:'+channelName);
 		config.concurrent.requirejs.push('requirejs:'+channelName);
 		config.concurrent.uglify.push('uglify:'+channelName);
 	}
 
 	grunt.initConfig(config);
 
-	grunt.registerTask('default', []);
-	grunt.registerTask('js-sync', ['jst','requirejs','uglify','cssjoin','cssmin','concurrent']);
-	grunt.registerTask('watch', ['watch']);
-	grunt.registerTask('init', ['jst']);
-	grunt.registerTask('hosts', function(env){
-		env = env || "dev";
-		var config = grunt.file.readJSON('package.json');
-		if(!config['env'][env]){
-			grunt.fail.fatal("no config for "+env+"!");
-		}
-		var result = [];
-		var hosts = config['env'][env]['hosts'] || {};
-		for(var x in hosts){
-			var host = x+"\t";
-			for (var i = 0; i < hosts[x].length; i++) {
-				host += hosts[x][i] + " ";
-			};
-			result.push(host);
-		}
-		grunt.log.writeln(result.join("\n"));
-	});
+
+	grunt.registerTask('js', ['concurrent']);
+	grunt.registerTask('css', ['cssjoin','cssmin']);
+	grunt.registerTask('watch', ['jst','watch']);
+	grunt.registerTask('server', ['jst','connect','watch']);
 
 	require('load-grunt-tasks')(grunt);
 
