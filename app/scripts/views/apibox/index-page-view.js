@@ -2,14 +2,14 @@ define(['talent',
 	'templates/apibox',
 	'views/apibox/header-view',
 	'views/apibox/add-interface-view',
-	'views/apibox/content-view',
+ 	'views/apibox/content-view',
 	'views/apibox/interface-page-view'
 ], function(Talent,
 	jst,
 	Header,
 	AddInterface,
 	Content,
-	InterFacePage) {
+	InterfacePageView) {
 	var MainView = Talent.Layout.extend({
 		template: jst['apibox/index-page'],
 		className: 'home-page-container',
@@ -30,7 +30,6 @@ define(['talent',
 			//--------------------------------实例化--------------------------------------
 			this.headerView = new Header();  				//---头header
 			this.contentView = new Content();				//---主页content
-			this.apiContentView = new InterFacePage();		//?
 			this.addInterfaceView = new AddInterface();		//---新建页面content
 			//-------------------------------事件监听-------------------------------------
 
@@ -49,17 +48,20 @@ define(['talent',
 			this.listenTo(this.addInterfaceView, "add:content", function() {
 				self.icontent.show(self.contentView);
 			});
+			this.listenTo(this.addInterfaceView,"reset:apilist",function(){
+				self.headerView.trigger("reset:apilist");
+			});
 			
 		},
 		getInterfaceData:function(pid,id){
 			var self =this;
 			Talent.app.request("apibox:getApi",{pid:pid,id:id}).done(function(resp) {
-				console.log(resp)
 				if(resp.flag) self.showInterface(resp.message)
 			});
 		}, 
 		showInterface:function(data){
 			var self=this;
+			data=JSON.parse(data);
 			if(data){
 				data.response=_.formatJson(data.response);
 				data.request=_.formatJson(data.request);

@@ -1,14 +1,5 @@
 define(['talent'], function(Talent) {
 	return Talent.Collection.extend({
-		getClassData: function() {
-			var deferred = new Talent.$.Deferred;
-			this.fetch({
-				"url": "api/wahahah"
-			}).done(function(resp) {
-				deferred.resolve(resp);
-			});
-			return deferred;
-		},
 		getProjects: function() {
 			var deferred = new Talent.$.Deferred;
 			this.fetch({
@@ -67,6 +58,15 @@ define(['talent'], function(Talent) {
 			var deferred = new Talent.$.Deferred();
             var model = new Talent.Model();
             model.url = "/api/interface/update";
+            model.save(options).done(function(resp) {
+                deferred.resolve(resp);
+            });
+            return deferred.promise();
+		}
+		,getMockUrl:function(options){
+			var deferred = new Talent.$.Deferred();
+            var model = new Talent.Model();
+            model.url = "/api/interface/getmockurl";
             model.save(options).done(function(resp) {
                 deferred.resolve(resp);
             });

@@ -1,0 +1,16 @@
+<span>
+	<%if(type!=2){%>
+		<input placeholder="Name" type="text" class="name"> 
+	<%}%>
+	<select class="type">
+		<option value="0" selected="selected">String</option>
+		<option value="1">Object</option>
+		<option value="2">Array</option>
+		<option value="3">Number</option>
+		<option value="4">Boolean</option>
+		<option value="5">Date</option>
+	</select>
+	<span class="text-span"> : <input type="text" placeholder="Value" class="value" > </span>
+	<button class="btn btn-primary json-add" pid="<%=pid%>" ptype="<%=type%>">Add</button> 
+	<button class="btn btn-default json-cancel">Cancel</button>
+</span>

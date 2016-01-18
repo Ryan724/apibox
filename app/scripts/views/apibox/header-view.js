@@ -3,10 +3,11 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 		template: jst['apibox/header']
 		,initialize: function() {
 			var self = this;
-			//--------------------请求数据（全部接口）--------------------------------
-			Talent.app.request("apibox:getAllData").done(function(resp) {
-				self.Data = jQuery.parseJSON(resp.message);
-				self.trigger("change:count",self.Data);
+			this.Data = {};
+			this.dealDataApis = {};
+			this.askAPI();
+			this.listenTo(this,"reset:apilist",function(){
+				self.askAPI();
 			});
 		},
 		events:function(){
@@ -26,6 +27,17 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			this.resetInput();
 			this.trigger("add:interface");
 		}
+		,askAPI:function(){//请求数据
+			//--------------------请求数据（全部接口）--------------------------------
+			var self = this;
+			Talent.app.request("apibox:getAllData").done(function(resp) {
+				if (resp.flag) {
+					self.Data = resp.message;
+					self.trigger("change:count", self.Data);
+					self.dealDataApis = self.dealData();
+				}
+			});
+		}
 		,resetInput:function(){//重置输入框
 			this.$("input[class=seach-nr]").val("").attr("data-id","").attr("data-project","");
 			this.$(".pro").attr({"data-id":"","data-project":""}).text("").removeClass("projectName");;
@@ -40,8 +52,8 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			var data = {};
 			data.id = $("input[class=seach-nr]").attr("data-id");
 			data.pid = $("input[class=seach-nr]").attr("data-project");
+			if(data.pid==""||data.id=="") return false;
 			this.resetInput();
-			console.log(data);
 			this.trigger("seach:apicontent",data); //跳转
 		}
 		,listClick:function(e){//点击内容
@@ -63,8 +75,17 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 			});
 			$(".seachlist-nr").empty();
 		}
+		,dealData:function(){//处理数据
+			var self = this;
+			var temporaryApis = [];
+			_.each(self.Data,function(item){
+				$.merge(temporaryApis,item.apis);
+			});
+			return temporaryApis;
+		}
 		,seachClick:function(e){//输入内容
 			event.stopPropagation();
+			var self = this;
 			var allData = this.Data
 			var apiList = "";
 			var inputIndex = $("input[class=seach-nr]").val();
@@ -73,18 +94,17 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 					if(inputIndex.indexOf("@")!=-1){//检索项目
 						inputIndex = inputIndex.substring(inputIndex.indexOf("@")+1);
 						var filtData = _.filter(allData,function(list){
-							return list.name.indexOf(inputIndex)==0;
+							return list.name.indexOf(inputIndex)!=-1;
 						});
 						_.each(filtData,function(list){
 							apiList+="<li class='seachlist' data-id='"+list.id+"' data-project=''><div class='seachlist-nr-title' name='"+list.name+"'>"+list.name+"</div><div class='seachlist-nr-subtitle'>"+ list.desc +"</div></li>";
 						});
 					}else{//未指定项目 检索接口
-						_.each(allData,function(list){
-							_.each(list.apis,function(listChild){
-								if(listChild.name.indexOf(inputIndex)==0){
-									apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title' name='"+listChild.name+"'>"+listChild.name+"<span class='proNamert'>"+listChild.projectName+"</span></div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>"
-								}
-							});
+						var filtData = _.filter(self.dealDataApis,function(list){
+							return list.name.indexOf(inputIndex)!=-1;
+						});
+						_.each(filtData,function(listChild){
+							apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title' name='"+listChild.name+"'>"+listChild.name+"<span class='proNamert'>"+listChild.projectName+"</span></div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>";
 						});
 					}
 				}
@@ -94,7 +114,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 					return list.id==pointProjectId;
 				});
 				var filtData = _.filter(findData.apis,function(list){
-					return	list.name.indexOf(inputIndex)==0;
+					return	list.name.indexOf(inputIndex)!=-1;
 				});
 				_.each(filtData,function(listChild){
 					apiList+="<li class='seachlist' data-id='"+listChild.id+"' data-project='"+listChild.project+"'><div class='seachlist-nr-title' name='"+listChild.name+"'>"+listChild.name+"<span class='proNamert'>"+listChild.projectName+"</span></div><div class='seachlist-nr-subtitle'>"+ listChild.desc +"</div></li>";

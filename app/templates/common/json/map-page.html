@@ -1,0 +1,19 @@
+<%if(type != 1&&type!=2){%>
+	<div pid="<%=pid%>" id="<%=id%>" style="margin-left: 18px;position: relative;">
+		<% if(name!= undefined ){%>
+			<span class="jn-name"><%=name%></span>:
+		<%}%>
+		<span class="jn-value"><%=value%></span>
+		<span class="deleteKeyBtn glyphicon glyphicon-trash" style="position: absolute; right: 30px;"/>
+	</div>
+<%}else{%>
+	<div pid="<%=pid%>" id="<%=id%>" style="position: relative;">
+		<span class="glyphicon glyphicon-chevron-down"/>
+		<span class="jn-name"><%=name%></span>
+		<em class="type-name"><%=typeName%></em>
+		<span class="deleteKeyBtn glyphicon glyphicon-trash" key =<%=name%> style="position: absolute; right: 30px;"></span>
+		<div class="contents" style="padding-left:10px;">
+			<span class="glyphicon glyphicon-plus" type="<%=type%>" pid="<%=id%>"></span>
+		</div> 
+	</div>
+<%}%>

@@ -23,6 +23,18 @@
 	left: 68px;
 	width: 200px;
 }
+.ico01,.ico02{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	position: relative;
+	left: -40px;
+	background: url(../../images/ico.png) no-repeat ;
+}
+.ico02{
+	background-position: 0 -29px;
+  	left: -20px;
+}
 .data-close{
 	margin-top: 20px;
 }
@@ -57,7 +69,63 @@
 	width: 198px;
 	margin-left:-30px;
 }
-
+/*-----------------------------------json------------------------------------------*/
+.json-root-page input{
+	width: 70px !important;
+	height: 20px !important;;
+}
+.json-root-page .jn-name{
+    display: inline-block !important;
+    width: 100px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.json-root-page .type-name{
+    font-family: Georgia, serif;
+    color: grey;
+    font-style: italic;
+    cursor: default;
+    line-height: 30px;
+    display: inline-block !important;
+    margin-left: 50px;
+}
+.json-root-page .jn-value{
+    display: inline-block;
+    margin-left: 50px;
+}
+.json-root-page{
+	border: 1px solid #e1e1e1;
+	border-radius: 6px;
+}
+.json-root-page-v{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.see-json{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+.request-json,
+.respone-json{
+	border: 1px  solid rgb(219, 218, 218);
+	border-radius: 2px;
+	display: inline-block;
+	font-size: 14px;
+	height: 200px;
+	margin:0;
+	width: 380px;
+	overflow: auto;
+	padding: 10px;
+	width: 380px;
+    resize: both;
+}
+.api-rsp , .api-req{
+	display: none;
+}
 /*--------------------------------------------zhengpengjie--------------------------------------------*/
 .box-header{
 	height:70px;
@@ -74,8 +142,9 @@
 	font-size: 18px;
 	position: relative;
 	/*-----------------------------------------jiayunqiu--------------------------------------*/
-	overflow: hidden;
+
 }
+.create-api{overflow: hidden;}
 .interface-api>ul,
 .c-step{
 	margin: 20px auto;
@@ -154,6 +223,7 @@
 .mock-view  .btns .btn,
 .check-view .btns .btn,
 .c-step .small-btns .btn,
+.p-step2 .small-btns .btn,
 .c-step .btns .btn{
 	cursor: pointer;
 	display: inline-block;
@@ -165,7 +235,8 @@
 	color: #fff;
 	font-size: 14px;
 }
-.c-step .small-btns .btn{
+.c-step .small-btns .btn,
+.p-step2 .small-btns .btn{
 	width:70px;
 	height: 30px;
 	line-height: 30px;
@@ -173,18 +244,21 @@
 .mock-view  .btns .btn-blue,
 .check-view .btns .btn-blue,
 .c-step .small-btns .btn-blue,
+.p-step2 .small-btns .btn-blue,
 .c-step .btns .btn-blue{
 	background-color: #5093e1;
 }
 .mock-view  .btns .btn-blue:hover,
 .check-view .btns .btn-blue:hover,
 .c-step .small-btns .btn-blue:hover,
+.p-step2 .small-btns .btn-blue:hover,
 .c-step .btns .btn-blue:hover{
 	background-color: #3B689B;
 }
 .mock-view  .btns .btn-grey,
 .check-view .btns .btn-grey,
 .c-step .small-btns .btn-grey,
+.p-step2 .small-btns .btn-grey,
 .c-step .btns .btn-grey{
 	color: #000;
 	background-color: #e1e1e1;
@@ -192,6 +266,7 @@
 .mock-view  .btns .btn-grey:hover,
 .check-view .btns .btn-grey:hover,
 .c-step .small-btns .btn-grey:hover,
+.p-step2 .small-btns .btn-grey,
 .c-step .btns .btn-grey:hover{
 	background-color: #B8B8B8;
 }
@@ -216,7 +291,8 @@
 	overflow-y:auto;*/
 }
 .projects>ul{
-	/*height:100px; */
+    max-height: 245px;
+    overflow-y: auto;
 	padding:0;
 }
 .project-item{
@@ -286,6 +362,23 @@
 .api-name-edit, .api-method-edit, .api-project-edit, .api-desc-edit, .api-url-edit, .api-req-deit, .api-rsp-edit{
 	display: none;
 }
+.api-url{
+	display: inline-block;
+	width: 400px;
+	word-break: break-all;
+}
+.api-project-edit .project{
+	position: absolute;
+	top: 0px;
+	left: 156px;
+}
+.api-project-edit .icons-down{
+	right: 56px;
+}
+.api-project-edit .project-select{
+	margin-left: 155px;
+  	margin-top: 18px;
+}
 .data-deal{
 	position: absolute;
 	top: 100px;
@@ -295,12 +388,17 @@
     height: 50px;
     line-height: 50px;
     border: 1px solid #e1e1e1;
+    margin: 10px;
     text-align: center;
     width: 200px;
+    cursor: pointer;
+	background-image:-webkit-linear-gradient(top,#FFF,#F2F2F2);
+	background-image:-o-linear-gradient(top,#FFF,#F2F2F2);
+	background-image:-ms-linear-gradient(top,#FFF,#F2F2F2);
+	background-image:linear-gradient(top,#FFF,#F2F2F2);
+	background-repeat: repeat-x;
 }
-.data-deal .server-check-btn{
-	border-top:0;
-}
+
 .data-layer{
 	display: none;
     width: 1200px;
@@ -319,7 +417,6 @@
 	width: 300px;
 	border: 1px solid #e1e1e1;
     float: left;
-    margin-bottom: 30px;
 }
 .mock-view .data-ul>li>span,
 .check-view .data-ul>li>span{
@@ -336,6 +433,7 @@
 .data-area pre{
 	margin: 0;
 	padding: 0;
+	min-height: 100px;
 }
 
 .data-area del {
@@ -361,4 +459,13 @@
 .create-url-btn{
     display: block;
     margin-bottom: 10px;
+}
+.mock-url{
+	display: none;
+	height:30px;
+	line-height:30px;
+	background-color: #E5E6E6;
+}
+.check-view .btn{
+	margin-top: 30px;
 }

@@ -1,0 +1,29 @@
+define(function(){
+
+  this["JST"] = this["JST"] || {};
+
+  this["JST"]["common/dialog/bsdialog-content-view"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<div style="word-wrap: break-word;">' +((__t = ( content)) == null ? '' : __t) +'</div>';}return __p};
+
+  this["JST"]["common/dialog/bsdialog"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape, __j = Array.prototype.join;function print() { __p += __j.call(arguments, '') }with (obj) {__p += '<div class="bs_dialog3 ' +((__t = (dialogId)) == null ? '' : __t) +'" style="z-index:1200">\r\n\t<div class="bs_dialog3_wrap">\r\n\t\t';if(title){;__p += '\r\n\t\t\t<div class="tit">' +((__t = (title)) == null ? '' : __t) +'</div>\r\n\t\t';};__p += '\r\n\t\t<div class="bscontent">\r\n\t\t\t';if(icon!="common"){;__p += '\r\n\t\t\t<ul class="icon_ul">\r\n\t\t\t\t<li class="icon_li">\r\n\t\t\t\t\t<span class="aui_icon ' +((__t = ( icon )) == null ? '' : __t) +'"></span>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li class="cont_li">\r\n\t\t\t\t\t<div class="bsdialog_content"></div>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t\t';}else{;__p += '\r\n\t\t\t\t<div class="bsdialog_content"></div>\r\n\t\t\t';};__p += '\r\n\t\t</div>\r\n\t\t';if(buttons){;__p += '\r\n\t\t\t<div class="bs_dialog3_btn" >\r\n\t\t\t\t';_.each(buttons,function(item,index){;__p += '\r\n\t\t\t\t\t<a id="' +((__t = (item.id)) == null ? '' : __t) +'">\r\n\t\t\t\t\t\t<span class="' +((__t = (item.type=="text"?"text_span":("btn_text "+item.type) )) == null ? '' : __t) +'">' +((__t = (item.name)) == null ? '' : __t) +'</span>\r\n\t\t\t\t\t</a>\r\n\t\t\t\t';});__p += '\r\n\t\t\t</div>\r\n\t\t';};__p += '\r\n\t</div>\t\t\r\n</div>';}return __p};
+
+  this["JST"]["common/json/enter-span"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape, __j = Array.prototype.join;function print() { __p += __j.call(arguments, '') }with (obj) {__p += '<span>\r\n\t';if(type!=2){;__p += '\r\n\t\t<input placeholder="Name" type="text" class="name"> \r\n\t';};__p += '\r\n\t<select class="type">\r\n\t\t<option value="0" selected="selected">String</option>\r\n\t\t<option value="1">Object</option>\r\n\t\t<option value="2">Array</option>\r\n\t\t<option value="3">Number</option>\r\n\t\t<option value="4">Boolean</option>\r\n\t\t<option value="5">Date</option>\r\n\t</select>\r\n\t<span class="text-span"> : <input type="text" placeholder="Value" class="value" > </span>\r\n\t<button class="btn btn-primary json-add" pid="' +((__t = (pid)) == null ? '' : __t) +'" ptype="' +((__t = (type)) == null ? '' : __t) +'">Add</button> \r\n\t<button class="btn btn-default json-cancel">Cancel</button>\r\n</span>';}return __p};
+
+  this["JST"]["common/json/json-page"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<div class="json-root-page">\r\n\t<span class="glyphicon glyphicon-chevron-down"><em class="type-name">Object</em></span>\r\n\t<div class="contents" style="padding-left:10px;">\r\n\t\t<span class="glyphicon glyphicon-plus" id="1" type="1" pid="' +((__t = (rootPid)) == null ? '' : __t) +'"></span>\r\n\t</div> \r\n\t<button class="btn btn-default see-json">确定</button>\r\n</div>';}return __p};
+
+  this["JST"]["common/json/map-page"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape, __j = Array.prototype.join;function print() { __p += __j.call(arguments, '') }with (obj) {if(type != 1&&type!=2){;__p += '\r\n\t<div pid="' +((__t = (pid)) == null ? '' : __t) +'" id="' +((__t = (id)) == null ? '' : __t) +'" style="margin-left: 18px;position: relative;">\r\n\t\t'; if(name!= undefined ){;__p += '\r\n\t\t\t<span class="jn-name">' +((__t = (name)) == null ? '' : __t) +'</span>:\r\n\t\t';};__p += '\r\n\t\t<span class="jn-value">' +((__t = (value)) == null ? '' : __t) +'</span>\r\n\t\t<span class="deleteKeyBtn glyphicon glyphicon-trash" style="position: absolute; right: 30px;"/>\r\n\t</div>\r\n';}else{;__p += '\r\n\t<div pid="' +((__t = (pid)) == null ? '' : __t) +'" id="' +((__t = (id)) == null ? '' : __t) +'" style="position: relative;">\r\n\t\t<span class="glyphicon glyphicon-chevron-down"/>\r\n\t\t<span class="jn-name">' +((__t = (name)) == null ? '' : __t) +'</span>\r\n\t\t<em class="type-name">' +((__t = (typeName)) == null ? '' : __t) +'</em>\r\n\t\t<span class="deleteKeyBtn glyphicon glyphicon-trash" key =' +((__t = (name)) == null ? '' : __t) +' style="position: absolute; right: 30px;"></span>\r\n\t\t<div class="contents" style="padding-left:10px;">\r\n\t\t\t<span class="glyphicon glyphicon-plus" type="' +((__t = (type)) == null ? '' : __t) +'" pid="' +((__t = (id)) == null ? '' : __t) +'"></span>\r\n\t\t</div> \r\n\t</div>\r\n';};}return __p};
+
+  this["JST"]["common/layouts/empty-layout"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<div id="main-region"></div>';}return __p};
+
+  this["JST"]["common/layouts/master-layout"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<!-- <div id="header-region" class="row"></div> -->\r\n\r\n<div id="content-wrapper" class="row">\r\n\t<!-- <div id="sidebar-region" class="col-md-3"></div> -->\r\n\t<div id="main-region" class="col-md-8"></div>\r\n</div>\r\n<!-- <div id="footer-region" class="row"></div> -->\r\n\r\n';}return __p};
+
+  this["JST"]["common/page-regions/content"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '';}return __p};
+
+  this["JST"]["common/page-regions/footer"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '';}return __p};
+
+  this["JST"]["common/page-regions/header"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '';}return __p};
+
+  this["JST"]["common/page-regions/sidebar"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '';}return __p};
+
+  return this["JST"];
+
+});

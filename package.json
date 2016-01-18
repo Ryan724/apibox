@@ -1,6 +1,6 @@
 {
   "name": "apibox",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "bin": {
     "apibox": "./bin/apibox"
   },

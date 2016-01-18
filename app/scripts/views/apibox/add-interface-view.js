@@ -1,17 +1,21 @@
 define(['talent',
  'templates/apibox',
   "views/apibox/project-select-view",
-  "views/apibox/interface-page-view"], 
+  "views/apibox/interface-page-view",
+  'views/common/json/json-page-view'], 
   function(Talent,
    jst,
     ProjectSelectView,
-    InterfacePageView) {
+    InterfacePageView,
+    JsonPageView) {
 	return Talent.Layout.extend({
 		template: jst['apibox/add-interface-page'],
 		className: 'home-page-container',
 		regions: {
 			projectRegion: ".project-select",
-			contentRegion:".box-content"
+			contentRegion:".box-content",
+			rspRegin : ".respone-json",
+			reqRegin : ".request-json"
 		},
 		events: function() {
 			var events = {};
@@ -23,6 +27,8 @@ define(['talent',
 			events["click .method-li"] = this.chageMethod;
 			events["click .method"] = this.showMethod;
 			events["click .submit-btn"] = this.createApi;
+			events["blur .api-req"] = this.formatDate;
+			events["blur .api-rsp"] = this.formatDate;
 			return events;
 		},
 		initialize: function() {
@@ -33,22 +39,53 @@ define(['talent',
 		onRender: function() {},
 		onShow: function() {
 			this.$(".next-page").hide();
+			this.showRspRegin();
+			this.showReqRegin();
+		},
+		showRspRegin:function(data){
+			var self =this;
+			data = data;
+			self.$(".respone-json").show();
+			this.rspView = new JsonPageView({model: new Talent.Model({data:data})});
+			this.rspRegin.show(this.rspView);
+			this.listenTo(this.rspView,"see:json",function(jsonStr){
+				var json =$.trim(_.formatJson(jsonStr));
+				self.$(".api-rsp").html(json).show();
+				self.rspView.close();
+				self.$(".respone-json").hide();
+			})
+		},
+		showReqRegin:function(data){
+			var self =this;
+			data = data;
+			self.$(".request-json").show();
+			this.reqView = new JsonPageView({model: new Talent.Model({data:data})});
+			this.reqRegin.show(this.reqView);
+			this.listenTo(this.reqView,"see:json",function(jsonStr){
+				var json =$.trim(_.formatJson(jsonStr));
+				self.$(".api-req").html(json).show();
+				self.reqView.close();
+				self.$(".request-json").hide();
+			})
 		},
 		createApi: function(e) {
 			var self = this;
 			var flag=true;
 			var url=this.$(".api-url").val();
-			var m = url.match(/(http[^"]*)"/g);
-			if(m){}
 			var method=this.$(".method").val();
 			var request=this.$(".api-req").val();
 			var response=this.$(".api-rsp").val();
-			try{
-				JSON.parse(request);
-				this.$(".api-req").removeClass("border-red");flag=true;
-			}catch(erro){
-				this.$(".api-req").addClass("border-red");flag=false;
+			if (request!="") {
+				try{
+					JSON.parse(request);
+					this.$(".api-req").removeClass("border-red");flag=true;
+				}catch(erro){
+					this.$(".api-req").addClass("border-red");flag=false;
+				};
+			}else{
+				request="";
 			};
+
 			try{
 				JSON.parse(response);
 				this.$(".api-rsp").removeClass("border-red");flag=true;
@@ -72,24 +109,20 @@ define(['talent',
 			}
 			if(flag){
 				Talent.app.request("apibox:addApi",api).done(function(resp) {
-				console.log(resp)
+				console.log(resp);
+				self.trigger("reset:apilist");
 				if(resp.flag){
 					self.showInterface(resp.message);
 				}
 			});
 			}
 		},
-		getInterfaceData:function(pid,id){
-			Talent.app.request("apibox:getApi",{pid:pid,id:id}).done(function(resp) {
-				console.log(resp);
-			});
-		},
 		showInterface:function(data){
 			var self=this;
 			// data ={"config":{"name":"1111111","desc":"111111111","projectName":"projectName","project":"1c67bb1faaf0c0255d71c8f4bc58e846","url":"11111111","method":"GET","createTime":1452826846748,"id":"bbe36fe19baf62630e3108a481a9a76f"},"request":"11111","request":"111111"}
 			if(data){
 				data.response=_.formatJson(data.response);
-				data.request=_.formatJson(data.request);
+				data.request!="" ? _.formatJson(data.request) : "";
 				this.interfacePageView = new InterfacePageView({model:new Talent.Model(data)});
 				this.contentRegion.show(this.interfacePageView);
 				this.listenTo(this.interfacePageView,"","xx")
@@ -105,11 +138,11 @@ define(['talent',
 		     if(interfaceName==""){
 		     	$(".api-name").addClass("border-red");
 		     	flag=false;
-		     };
+		     }else{$(".api-name").removeClass("border-red");};
 		     if (productName=="") {
 		     	$(".project").addClass("border-red");
 		     	flag=false;
-		     };
+		     }else{$(".project").removeClass("border-red");};
 		     if (flag) {
 			    this.model.set("isNext", true);
 				this.$(".next-page").show();
@@ -163,6 +196,18 @@ define(['talent',
 			this.$(".project").val(project.name).attr("id", project.id);
 			this.$(".project-select").hide();
 			this.isProjectRegionShow = false;
+		},
+		formatDate:function(e){
+			var self=this;
+			var val=this.$(e.currentTarget).val();
+			try{
+				if (JSON.parse(val)) {
+					val=_.formatJson(this.$(e.currentTarget).val());
+					self.$(e.currentTarget).val(val);
+				};
+			}catch(err){
+				return false;
+			}
 		},
 		onClose: function() {}
 	});

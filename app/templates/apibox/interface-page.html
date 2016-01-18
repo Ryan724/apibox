@@ -2,37 +2,37 @@
 	<ul>
 		<li>
 			<span>接口名称</span>
-			<span class="api-name"><%=config.name%></span>
-			<input type="text" class="api-name-edit"/>
+			<span class="api-name desc-span"><%=config.name%></span>
+			<input type="text" class="api-name-edit common" data-name="name"/>
 		</li>
 		<li style="position:relative;">
 			<span>项目</span>
-			<span class="api-project"><%=config.projectName%></span>
+			<span class="api-project desc-span"><%=config.projectName%></span>
 			<section  class="api-project-edit">
-				<input type="text" class="project" placeholder="请选择项目"  readonly="readonly"/>
+				<input data-name="projectName" type="text" class="project common" placeholder="请选择项目"  readonly="readonly"/>
 				<span class="icons-down"></span>
 				<div class="project-select"></div>
 			</section>
 		</li>
 		<li>
 			<span style="float: left; margin:10px 50px 0 0;">接口描述</span>
-			<pre><%=config.desc%></pre>
-			<textarea class="api-desc-edit"  placeholder="请输入接口描述"></textarea>
+			<pre class="desc-span"><%=config.desc%></pre>
+			<textarea data-name="desc" class="api-desc-edit common"  placeholder="请输入接口描述"></textarea>
 		</li>
 		<li>
-			<span>接口路径</span>
-			<span class="api-url"><%=config.url%></span>
-			<input type="text" class="api-url-edit" class="api-name"/>
+			<span style="float:left">接口路径</span>
+			<span class="api-url desc-span"><%=config.url%></span>
+			<input data-name="url" type="text" class="api-url-edit common" class="api-name"/>
 		</li>
 		<li>
 			<span>请求方式</span>
-			<span class="api-method"><%=config.method%></span>
-			<input type="text" class="api-method-edit" class="api-name"/>
+			<span class="api-method desc-span"><%=config.method%></span>
+			<input data-name="method" type="text" class="api-method-edit common" class="api-name"/>
 		</li>
 		<li class="data-edit">
 			<span style="float: left; margin:10px 50px 0 0;">请求数据</span>
 			<pre><%=request%></pre>
-			<textarea   class="api-req-deit" placeholder="请输入接口描述"></textarea>
+			<textarea data-name="method" class="api-req-deit" placeholder="请输入接口描述"></textarea>
 		</li>
 		<li class="data-edit">
 			<span style="float: left; margin:10px 50px 0 0;">响应数据</span>
@@ -42,10 +42,10 @@
 	</ul>
 	<div class="data-deal">
 		<div class="data-mock-btn">
-			<span>数据Mock</span>
+			<span class="ico01"></span><span>数据Mock</span>
 		</div>
 		<div class="server-check-btn">
-			<span>Sever数据校验</span>
+			<span class="ico02"></span><span>Sever数据校验</span>
 		</div>
 	</div>
 	<div class="data-layer data-layer-data-layer">

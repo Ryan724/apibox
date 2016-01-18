@@ -31,6 +31,7 @@
 	background: #fafafa;
 	font-weight: normal;
 	position: relative;
+    margin-left: -1px;
 }
 input.seach-nr{
 	width: 814px;
@@ -56,6 +57,9 @@ input.seach-nr{
 	border-radius: 2px;
 	margin-left: 20px;
 }
+.indexheader .new-button:hover{
+	background: #1070b5;
+}
 .indexheader:after {
 	content: " ";
 	display: block;
@@ -68,7 +72,8 @@ input.seach-nr{
 	overflow-y: auto;  
 	top: 39px;
 	padding: 0;
-	background:rgba(240,238,238,1);
+	z-index: 999;
+	background:#fff;
 }
 
 .seachlist{
@@ -76,6 +81,8 @@ input.seach-nr{
 	padding: 5px 0;
 	padding-left: 40px;
 	cursor: pointer;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e1e1e1;
 }
 .seachlist:hover{
 	background: #e6e6e6;
@@ -90,7 +97,7 @@ input.seach-nr{
 }
 .proNamert{
 	float: right;
-	font-weight: bold;
+	font-family: arial, 黑体, sans-serif;
 	font-size: 17px;
 	line-height: 40px;
 	margin-right: 45px;
@@ -101,14 +108,14 @@ input.seach-nr{
 .projectName{
 	display: inline-block;
 	float: left;
-	height: 38px;
+	height: 41px;
 	line-height: 40px;
-	border:1px solid #dddddd;
 	border-right: none;
 	padding: 0 8px;
 	font-size: 14px;
 	color: #aeaeae;
 	cursor: pointer;
+	background-color: #e1e1e1;
 }
 .bordernone{
 	border: none;
