@@ -73,8 +73,8 @@ define(['talent',
 			var flag=true;
 			var url=this.$(".api-url").val();
 			var method=this.$(".method").val();
-			var request=this.$(".api-req").val();
-			var response=this.$(".api-rsp").val();
+			var request=this.$(".api-req").val().replace(/[ ]|\ +|[\r\n]/g,"");
+			var response=this.$(".api-rsp").val().replace(/[ ]|\ +|[\r\n]/g,"");
 			if (request!="") {
 				try{
 					JSON.parse(request);
@@ -99,17 +99,16 @@ define(['talent',
 				"desc": this.$(".api-desc").val(),
 				"project": this.$(".project").attr("id"),
 				"projectName": this.$(".project").val(),
-				"url": this.$(".api-url").val(),
-				"method": this.$(".method").attr("id")
+				"url": url,
+				"method": method
 			};
 			var api = {
 				"config": config,
-				"request": this.$(".api-req").val(),
-				"response": this.$(".api-rsp").val()
+				"request": request,
+				"response": response
 			}
 			if(flag){
 				Talent.app.request("apibox:addApi",api).done(function(resp) {
-				console.log(resp);
 				self.trigger("reset:apilist");
 				if(resp.flag){
 					self.showInterface(resp.message);
@@ -119,13 +118,11 @@ define(['talent',
 		},
 		showInterface:function(data){
 			var self=this;
-			// data ={"config":{"name":"1111111","desc":"111111111","projectName":"projectName","project":"1c67bb1faaf0c0255d71c8f4bc58e846","url":"11111111","method":"GET","createTime":1452826846748,"id":"bbe36fe19baf62630e3108a481a9a76f"},"request":"11111","request":"111111"}
 			if(data){
 				data.response=_.formatJson(data.response);
-				data.request!="" ? _.formatJson(data.request) : "";
+				data.request=_.formatJson(data.request);
 				this.interfacePageView = new InterfacePageView({model:new Talent.Model(data)});
 				this.contentRegion.show(this.interfacePageView);
-				this.listenTo(this.interfacePageView,"","xx")
 			}
 		},
 		showNextStep: function(e) {
@@ -202,7 +199,7 @@ define(['talent',
 			var val=this.$(e.currentTarget).val();
 			try{
 				if (JSON.parse(val)) {
-					val=_.formatJson(this.$(e.currentTarget).val());
+					val=$.trim(_.formatJson(val));
 					self.$(e.currentTarget).val(val);
 				};
 			}catch(err){

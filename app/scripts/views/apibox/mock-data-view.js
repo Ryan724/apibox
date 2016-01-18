@@ -9,7 +9,7 @@ define(['talent',
 				var events = {};
 				events["click .create-url-btn"] = this.createMockUrl;
 				events["click .cancle-mock-btn"] = this.cancleMock;
-				events["keyup .server-data"] =this.formatServerData;
+				events["blur  .mock-data"] =this.formatMockData;
 				return events;
 			},
 			initialize: function() {
@@ -32,10 +32,20 @@ define(['talent',
                 		}
             	});
             },
+            formatMockData:function(){
+            	var mockData = this.$(".mock-data").text().replace(/[ ]|\ +|[\r\n]/g,"");
+        		try{
+					JSON.parse(mockData);
+					mockData = _.formatJson(mockData); 
+					this.$(".mock-data").html("<pre>"+mockData+"</pre>")
+				}catch(err){
+					console.log("修改data非标准JSON");
+				}
+            },
 			createMockUrl:function(){
 				var self =this;
-				var mockData = this.$(".mock-data").html();
-				Talent.app.request("apibox:getMockUrl",{"pid":this.model.get("pid"),"id":this.model.get("id"),"mockData":mockData}).done(function(resp) {
+				var mockData = this.$(".mock-data").text().replace(/[ ]|\ +|[\r\n]/g,"");
+				Talent.app.request("apibox:getMockUrl",{"pid":this.model.get("pid"),"id":this.model.get("id"),"mock":mockData}).done(function(resp) {
 					if(resp.flag)self.$(".mock-url").html(resp.message).show();
 				});
 			},

@@ -121,6 +121,7 @@ define(['talent','templates/apibox'], function(Talent, jst) {
 				});
 			}
 			$(".seachlist-nr").empty().append(apiList);
+			this.trigger("reset:apilist");
 		}
 		,onRender: function() {}
 	});

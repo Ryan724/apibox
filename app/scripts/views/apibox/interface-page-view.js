@@ -74,7 +74,7 @@ define(['talent',
 					request:this.model.get("request"),
 					response:this.model.get("response")
 				}
-					Talent.app.request("apibox:updateData",data).done(function(resp) {
+				Talent.app.request("apibox:updateData",data).done(function(resp) {
 					console.log(resp);
 				});
 			},
@@ -96,7 +96,6 @@ define(['talent',
 			},
 			chageProject: function(project) {
 				this.$(".project").parent().prev().text(project.name).attr("id", project.id).show();
-				// this.$(".project").val(project.name).attr("id", project.id);
 				this.$(".project").parent().hide();
 				this.$(".project-select").hide();
 				this.saveData("projectName",project.name);
@@ -130,7 +129,7 @@ define(['talent',
 				}
 				try{
 	                if(JSON.parse(val)){
-	                	val=_.formatJson(val);
+	                	val=$.trim(_.formatJson(val));
 	                	node.prev().text(val).removeClass("border-red").show();
 	                };
 	            }catch(erro){
