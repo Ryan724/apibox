@@ -155,9 +155,10 @@ module.exports = function( grunt ) {
 
 	grunt.initConfig(config);
 
-
+	grunt.registerTask('default', []);
 	grunt.registerTask('js', ['concurrent']);
 	grunt.registerTask('css', ['cssjoin','cssmin']);
+	grunt.registerTask('init', ['jst',"js","css"]);
 	grunt.registerTask('watch', ['jst','watch']);
 	grunt.registerTask('server', ['jst','connect','watch']);
 
