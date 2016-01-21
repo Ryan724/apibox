@@ -123,8 +123,13 @@
 	width: 380px;
     resize: both;
 }
-.api-rsp , .api-req{
+.api-rsp-p, .api-req-p{
 	display: none;
+}
+.api-rsp-b, .api-req-b{
+	font-size: 14px;
+    position: absolute;
+    right: 94px;
 }
 /*--------------------------------------------zhengpengjie--------------------------------------------*/
 .box-header{

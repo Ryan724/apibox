@@ -27,6 +27,8 @@ define(['talent',
 			events["click .method-li"] = this.chageMethod;
 			events["click .method"] = this.showMethod;
 			events["click .submit-btn"] = this.createApi;
+			events["click .api-req-b"] = this.editReqJson;
+			events["click .api-rsp-b"] = this.editRspJson;
 			events["blur .api-req"] = this.formatDate;
 			events["blur .api-rsp"] = this.formatDate;
 			return events;
@@ -50,7 +52,8 @@ define(['talent',
 			this.rspRegin.show(this.rspView);
 			this.listenTo(this.rspView,"see:json",function(jsonStr){
 				var json =$.trim(_.formatJson(jsonStr));
-				self.$(".api-rsp").html(json).show();
+				self.$(".api-rsp").html(json);
+				self.$(".api-rsp-p").show();
 				self.rspView.close();
 				self.$(".respone-json").hide();
 			})
@@ -63,10 +66,25 @@ define(['talent',
 			this.reqRegin.show(this.reqView);
 			this.listenTo(this.reqView,"see:json",function(jsonStr){
 				var json =$.trim(_.formatJson(jsonStr));
-				self.$(".api-req").html(json).show();
+				self.$(".api-req").html(json);
+				self.$(".api-req-p").show();
 				self.reqView.close();
 				self.$(".request-json").hide();
 			})
+		},
+		editRspJson:function(e){
+			var node =$(e.currentTarget).parent();
+			var textareaNode  = node.find(".api-rsp");
+			var val = textareaNode.val();
+			this.$(".api-rsp-p").hide();
+			this.showRspRegin(val);
+		},
+		editReqJson:function(e){
+			var node =$(e.currentTarget).parent();
+			var textareaNode  = node.find(".api-req");
+			var val = textareaNode.val()
+			this.$(".api-req-p").hide();
+			this.showReqRegin(val);
 		},
 		createApi: function(e) {
 			var self = this;
@@ -196,7 +214,8 @@ define(['talent',
 		},
 		formatDate:function(e){
 			var self=this;
-			var val=this.$(e.currentTarget).val();
+			var node = this.$(e.currentTarget);
+			var val=node.val();
 			try{
 				if (JSON.parse(val)) {
 					val=$.trim(_.formatJson(val));
