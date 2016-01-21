@@ -1,6 +1,6 @@
 {
   "name": "apiboxs",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Api tools,check server data,mock data",
   "bin": {
     "apibox": "./bin/apibox"
