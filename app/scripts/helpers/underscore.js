@@ -45,36 +45,36 @@ define(['$', '_', 'helpers/context'],
 			_.up(name, time);
 		}
 		_.up = function(label, time, step) {
-			// stop calling api in elink page
-			if (location.href.indexOf('/Elink/') > -1) return;
+				// stop calling api in elink page
+				if (location.href.indexOf('/Elink/') > -1) return;
 
-			var uid = Context.getGlobal("generalData").UserId||Context.getUserInfo().id;
-			var tid = Context.getGlobal("generalData").TenantId||Context.getTenantInfo().id;
-			var appName = "recruit.tms.beisen.com";
-			var sid = 0;
+				var uid = Context.getGlobal("generalData").UserId || Context.getUserInfo().id;
+				var tid = Context.getGlobal("generalData").TenantId || Context.getTenantInfo().id;
+				var appName = "recruit.tms.beisen.com";
+				var sid = 0;
 
-			if (step === undefined) {
-				type = 1;
-				step = 0;
-				sid = uid + "-" + Math.round(Math.random() * 1000);
-			} else {
-				type = 2;
+				if (step === undefined) {
+					type = 1;
+					step = 0;
+					sid = uid + "-" + Math.round(Math.random() * 1000);
+				} else {
+					type = 2;
+				}
+				var url = "http://opsapi.tita.com/opsapi/AddLog";
+				var params = "?appName=" + appName + "&label=" + encodeURIComponent(label) + "&uid=" + uid + "&tid=" + tid + "&time=" + time + "&type=" + type + "&sid=" + sid + "&step=" + step;
+				var img = new Image;
+				img.src = url + params;
+
+				// user analysis in nginx
+				var img2 = new Image;
+				// img2.src = "http://ua.beisen.co/_.gif" + params;
 			}
-			var url = "http://opsapi.tita.com/opsapi/AddLog";
-			var params = "?appName=" + appName + "&label=" + encodeURIComponent(label) + "&uid=" + uid + "&tid=" + tid + "&time=" + time + "&type=" + type + "&sid=" + sid + "&step=" + step;
-			var img = new Image;
-			img.src = url + params;
-
-			// user analysis in nginx
-			var img2 = new Image;
-			// img2.src = "http://ua.beisen.co/_.gif" + params;
-		}
-		/**
-		 * Log executation path
-		 * @methodOf _
-		 * @param  {String} message
-		 * @param  {String} functionName
-		 */
+			/**
+			 * Log executation path
+			 * @methodOf _
+			 * @param  {String} message
+			 * @param  {String} functionName
+			 */
 		_.log = function(message, functionName) {
 			clearTimeout(_.log.timer);
 
@@ -109,16 +109,16 @@ define(['$', '_', 'helpers/context'],
 		 * @return {String} functionName
 		 */
 		_.formatDate = function(data, format) {
-			data = data || "";
-			if (typeof data != 'string' || data.constructor != String) return;
-			// 只格式化这种形式： "/Date(-2209017600000+0800)/"
-			if (data.indexOf('/Date') != 0) return data;
-			format = format || "YYYY-MM-DD";
-			return moment(data.replace("/\\/ig", "")).format(format);
-		}
-		/*
-		*Format JSON
-		*/
+				data = data || "";
+				if (typeof data != 'string' || data.constructor != String) return;
+				// 只格式化这种形式： "/Date(-2209017600000+0800)/"
+				if (data.indexOf('/Date') != 0) return data;
+				format = format || "YYYY-MM-DD";
+				return moment(data.replace("/\\/ig", "")).format(format);
+			}
+			/*
+			 *Format JSON
+			 */
 		_.formatJson = function(json, options) {
 			var reg = null,
 				formatted = '',
@@ -236,21 +236,21 @@ define(['$', '_', 'helpers/context'],
 		 @nullable 是否可以存在空地址
 		 */
 		_.validSepMail = function(str, sep, nullable) {
-			var v = true;
-			var emArray = _.getSepMail(str, sep);
-			if (emArray.length == 0 && nullable) return v;
+				var v = true;
+				var emArray = _.getSepMail(str, sep);
+				if (emArray.length == 0 && nullable) return v;
 
-			_.each(emArray, function(em) {
-				if (!_.validMail(em)) {
-					v = false;
-				}
-			});
-			return v;
-		}
-		/*
-		 //验证单个邮件地址的格式是否正确;
-		 @str 邮件地址字符串
-		 */
+				_.each(emArray, function(em) {
+					if (!_.validMail(em)) {
+						v = false;
+					}
+				});
+				return v;
+			}
+			/*
+			 //验证单个邮件地址的格式是否正确;
+			 @str 邮件地址字符串
+			 */
 		_.validMail = function(str) {
 			var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/;
 			return reg.test(str);
@@ -262,17 +262,17 @@ define(['$', '_', 'helpers/context'],
 		 @sep 字符串中使用的分隔符
 		 */
 		_.getSepMail = function(str, sep) {
-			var emailStr = $.trim(str);
-			if (emailStr == "") return [];
-			var tmpArray = str.split(sep);
-			var rArray = [];
-			_.each(tmpArray, function(em) {
-				var tmp = $.trim(em);
-				if (tmp != "") rArray.push(tmp);
-			});
-			return rArray;
-		}
-		//因为这个数据有可能会在多个页面之间使用, 所以放在这里当成全局的配置
+				var emailStr = $.trim(str);
+				if (emailStr == "") return [];
+				var tmpArray = str.split(sep);
+				var rArray = [];
+				_.each(tmpArray, function(em) {
+					var tmp = $.trim(em);
+					if (tmp != "") rArray.push(tmp);
+				});
+				return rArray;
+			}
+			//因为这个数据有可能会在多个页面之间使用, 所以放在这里当成全局的配置
 		_.getPagingResumeLsId = function() {
 			return "view_paging_resume_ls"
 		}
@@ -284,77 +284,77 @@ define(['$', '_', 'helpers/context'],
 
 		//not ready for use
 		_.showCompatibleIframe = function(el, ctt) {
-			var ifr = document.createElement("iframe");
-			el.appendChild(ifr);
-			// debugger;
-			try {
-				ifr.contentWindow.document;
-			} catch (e) {
-				ifr.src = "javascript:void((function(){document.open();document.domain='" + document.domain + "';document.close();})())";
+				var ifr = document.createElement("iframe");
+				el.appendChild(ifr);
+				// debugger;
+				try {
+					ifr.contentWindow.document;
+				} catch (e) {
+					ifr.src = "javascript:void((function(){document.open();document.domain='" + document.domain + "';document.close();})())";
+				}
+				window.setTimeout(function() {
+					ifr.contentWindow.document.body.innerHTML = ctt;
+				}, 10);
 			}
-			window.setTimeout(function() {
-				ifr.contentWindow.document.body.innerHTML = ctt;
-			}, 10);
-		}
-		//$.when
+			//$.when
 		_.getDataSync = function(model, url, datas, type) {
-			var m = model || new Talent.Model();
-			var d = $.Deferred();
-			m.url = url;
-			m[type](datas).done(d.resolve);
-			return d.promise();
-		}
-		//获取本地数据
-		//@name 名称
-		_.getStore = function(name){
+				var m = model || new Talent.Model();
+				var d = $.Deferred();
+				m.url = url;
+				m[type](datas).done(d.resolve);
+				return d.promise();
+			}
+			//获取本地数据
+			//@name 名称
+		_.getStore = function(name) {
 			return Store.get(name);
 		}
 
 		//获取本地数据
 		//@name 名称
 		_.getStoreWithExp = function(name) {
-			return Store.withExp.get(name);
-		}
-		//遍历本地所有数据
-		_.getStoreForEach = function(callback){
+				return Store.withExp.get(name);
+			}
+			//遍历本地所有数据
+		_.getStoreForEach = function(callback) {
 			Store.forEach(function(key, val) {
 				callback(key, val);
 			})
 		}
 
-		_.getStoreAll = function(){
-			var store = Store.getAll();
-			return store;
-		}
-		//设置一个带有效期本地数据
-		//@name 名称
-		//@data 数据
-		//@exp 有效期，单位：毫秒
+		_.getStoreAll = function() {
+				var store = Store.getAll();
+				return store;
+			}
+			//设置一个带有效期本地数据
+			//@name 名称
+			//@data 数据
+			//@exp 有效期，单位：毫秒
 		_.setStoreWithExp = function(name, data, exp) {
-			return Store.withExp.set(name, data, exp);
-		}
-		//设置一个本地数据
-		_.setStore = function(key, value){
+				return Store.withExp.set(name, data, exp);
+			}
+			//设置一个本地数据
+		_.setStore = function(key, value) {
 			Store.set(key, value);
 		}
 
 		//是否支持本地存储
 		_.checkStore = function() {
-			return Store.enabled;
-		}
-		//设置上下文数据到本地存储
+				return Store.enabled;
+			}
+			//设置上下文数据到本地存储
 		_.setContextData = function(name) {
-			Store.set(name, Context.getGlobal(name));
-		}
-		//删除本地存储数据
+				Store.set(name, Context.getGlobal(name));
+			}
+			//删除本地存储数据
 		_.removeStore = function(name) {
-			Store.remove(name);
-		}
-		//清除本地存储所有数据
+				Store.remove(name);
+			}
+			//清除本地存储所有数据
 		_.clearStore = function() {
-			Store.clear();
-		}
-		//获取上下文数据到本地存储
+				Store.clear();
+			}
+			//获取上下文数据到本地存储
 		_.getContextData = _.getStoreData = function(key) {
 			return Store.get(key);
 		}
@@ -383,23 +383,75 @@ define(['$', '_', 'helpers/context'],
 				}
 			});
 		}
-		_.accsub = function (arg1, arg2) {
-			var r1, r2, m, n;
-			try {
-				r1 = arg1.toString().split(".")[1].length;
-			} catch (e) {
-				r1 = 0;
+		_.accsub = function(arg1, arg2) {
+				var r1, r2, m, n;
+				try {
+					r1 = arg1.toString().split(".")[1].length;
+				} catch (e) {
+					r1 = 0;
+				}
+				try {
+					r2 = arg2.toString().split(".")[1].length;
+				} catch (e) {
+					r2 = 0;
+				}
+				m = Math.pow(10, Math.max(r1, r2)); //动态控制精度长度
+				n = (r1 >= r2) ? r1 : r2;
+				return ((arg1 * m - arg2 * m) / m).toFixed(n);
 			}
-			try {
-				r2 = arg2.toString().split(".")[1].length;
-			} catch (e) {
-				r2 = 0;
-			}
-			m = Math.pow(10, Math.max(r1, r2)); //动态控制精度长度
-			n = (r1 >= r2) ? r1 : r2;
-			return ((arg1 * m - arg2 * m) / m).toFixed(n);
-		}
-
+			/**
+			 * 将所有基本类型转换成“__string__”这种形式，返回对象
+			 * @param  {[type]} obj [description]
+			 * @return {[type]}     [description]
+			 */
+		_.val2TypeOnObject = function(obj) {
+			//获取传入对象基本类型
+			var basket = {};
+			var baseType = _.isArray(obj) ? 2 : _.isObject(obj) ? 1 : _.isString(obj) ? 0 : _.isBoolean(obj) ? 4 : _.isNumber(obj) ? 3 : 5;
+			var baseObj = baseType == 2 ? [] : baseType == 1 ? {} : obj;
+			var baseId = (new Date()).valueOf() + Math.round(Math.random() * 1000);
+			var typeArr = ["String", "Object", "Array", "Number", "Boolean", "Date"];
+			var eachProp = function(obj, pid, ptype) {
+				_.forIn(obj, function(value, key) {
+					var id = (new Date()).valueOf() + Math.round(Math.random() * 1000);
+					var type = _.isArray(value) ? 2 : _.isObject(value) ? 1 : _.isString(value) ? 0 : _.isBoolean(value) ? 4 :_.isNumber(value) ? 3 : 5
+					basket[id] = _.isArray(value) ? [] : _.isObject(value) ? {} : "__" + typeArr[type] + "__";
+					if (ptype != 2) {
+						if (!key) return;
+						basket[pid][key] = basket[id];
+					} else {
+						basket[pid].push(basket[id])
+					}
+					if (type == 1 || type == 2) eachProp(value, id, type);
+				});
+			};
+			if (baseType != 1 && baseType != 2) return obj;
+			basket[baseId] = baseObj;
+			eachProp(obj, baseId, baseType);
+			return baseObj;
+		};
+		_.simplePlainObject=function(plainObject){
+			var eachProp = function(obj) {
+				obj = _.isArray(obj)? uniqColl(obj):obj;
+				if(_.isArray(obj)){
+					_.forIn(obj, function(value, key) {
+						value = _.isArray(value)? uniqColl(value):value;
+						if(_.isObject(value)||_.isArray(value)) eachProp(value);
+					});	
+				}
+				
+			};
+			var uniqColl = function(coll){
+				var arr = [];
+				_.each(coll,function(item){
+					arr.push(JSON.stringify(item));
+				});
+				arr = _.uniq(arr);
+				return [JSON.parse(arr[0])];
+			};
+			eachProp(plainObject);
+			console.log(plainObject)
+		};
 		return _;
 
-});
+	});

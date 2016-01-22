@@ -44,7 +44,7 @@ define(['talent',
 			diffDataDeal:function(){
 				var serverData = this.$(".server-data>pre").html();
 				var apiData = this.$(".interface-data>pre").html();
-				var diff = jsDiff[this.diffType[2]](apiData,serverData);
+				var diff = jsDiff[this.diffType[1]](apiData,serverData);
 				var diffData = this.diffTemplate({diff:diff})
 				this.$(".diff-data").html("<pre>"+diffData+"</pre>")
 			},

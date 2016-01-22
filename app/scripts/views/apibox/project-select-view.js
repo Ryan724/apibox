@@ -31,8 +31,7 @@ define(['talent',
 				Talent.app.request("apibox:addProject",project).done(function(resp) {
 					if(resp.flag==false) return;
 					self.trigger("choice:project",resp.message)
-				});
-				
+				});				
 			},
 			addProjectShow:function(e){
 				this.$(".p-step1").hide();
