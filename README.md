@@ -2,10 +2,7 @@
 
 ## 本地运行
 * 安装[nodejs](http://ux.beisen.co/redmine/attachments/download/2/node-v0.8.18-x64.msi)；
-* 获取项目源码：`git clone <项目地址>`；
-* 进入项目源码目录；
-* 安装node modules：`npm install`；
-* apibox目录下：npm link
+* 安装apibox：`npm install apiboxs -g`；
 * 运行项目：`apibox	-s` 在浏览器上 打开http://127.0.0.1:3000;
 
 *一種接口文檔管理工具
